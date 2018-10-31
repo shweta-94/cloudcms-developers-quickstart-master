@@ -11,27 +11,29 @@
     <title>All the Authors in your Sample Project</title>
     <script>
         Gitana.connect({
-            "clientKey": "{{{clientKey}}}",
-            "clientSecret": "{{{clientSecret}}}",
-            "username": "{{{username}}}",
-            "password": "{{{password}}}",
-            "baseURL": "{{{baseURL}}}",
-            "application": "{{{application}}}"
+            "clientKey": "9d174513-8be3-44aa-a1c8-0cb18dd72fbe",
+            "clientSecret": "Dd5kpu9NPpYyThkHZUF/bhi4XVms/knRp2bw4O8kMOZ89q5RWO07KNhz0lPLbhOsphT/xtivmxzvOw1iJ2LC18PBjBMh1JNSMN+0xmAYkfk=",
+            "username": "df69e7a5-f0f7-4bbd-9ef8-24b3ab73862f",
+            "password": "OZFBCz143MkdSloIwkmdjk8LqIXUzjyYQgdb3BwRC2goWfob7TGc/LMWJONe7T7zKA4CE9SYRtWrEzU0K8lNP8CrQfjSEh3cPP4k82ahuFI=",
+            "baseURL": "http://localhost:8080",
+            "application": "85eb745717c460b47d32"
         }, function(err) {
             var html = "<table>";
-            this.datastore("content").readBranch("master").queryNodes({
-                "_type": "my:author"
-            }).each(function() {
+                this.platform().queryRepositories().then(function() {
+                    $("textarea").append(JSON.stringify(this, null, "  "));
+                });
+
+            this.datastore("content").queryRepositories().each(function() {
                 html += "<tr>";
                 // image
                 html += "<td>";
-                html += "<img height='100' width='100' src='http://localhost/proxy/repositories/" + this.getRepositoryId() + "/branches/" + this.getBranchId() + "/nodes/" + this.Image.id + "/attachments/default'> ";
+                // html += "<img height='100' width='100' src='http://localhost/proxy/repositories/" + this.getRepositoryId() + "/branches/" + this.getBranchId() + "/nodes/" + this.Image.id + "/attachments/default'> ";
                 html += "</br>";
                 html += "</br>";
                 html += "</td>";
                 html += "<td>";
-                html += "<h3>" + this.title + "</h3>";
-                html += "<p>" + this.Description + "</p>";
+                html += "<h3>" + this + "</h3>";
+                // html += "<p>" + this.Description + "</p>";
                 html += "</td>";
                 html += "</tr>";
             }).then(function() {
