@@ -19,21 +19,19 @@
             "application": "85eb745717c460b47d32"
         }, function(err) {
             var html = "<table>";
-                this.platform().queryRepositories().then(function() {
-                    $("textarea").append(JSON.stringify(this, null, "  "));
-                });
-
-            this.datastore("content").queryRepositories().each(function() {
+            this.datastore("content").readBranch("master").queryNodes({
+                "_type": "store:author"
+            }).each(function() {
                 html += "<tr>";
                 // image
                 html += "<td>";
-                // html += "<img height='100' width='100' src='http://localhost/proxy/repositories/" + this.getRepositoryId() + "/branches/" + this.getBranchId() + "/nodes/" + this.Image.id + "/attachments/default'> ";
+                html += "<img height='100' width='100' src='http://localhost/proxy/repositories/" + this.getRepositoryId() + "/branches/" + this.getBranchId() + "/nodes/" + this.Image.id + "/attachments/default'> ";
                 html += "</br>";
                 html += "</br>";
                 html += "</td>";
                 html += "<td>";
-                html += "<h3>" + this + "</h3>";
-                // html += "<p>" + this.Description + "</p>";
+                html += "<h3>" + this.title + "</h3>";
+                html += "<p>" + this.Description + "</p>";
                 html += "</td>";
                 html += "</tr>";
             }).then(function() {
