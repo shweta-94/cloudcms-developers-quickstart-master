@@ -16,8 +16,9 @@
 
 </head>
 <body>
-<div id="result"></div>
-
+<div id="cat">
+    <h1>{{title}}</h1>
+</div>
 </body>
 
 <script>
@@ -33,6 +34,9 @@
         this.datastore("content").readBranch("master").queryNodes({
             "_type": "store:author"
         }).each(function() {
+
+            document.getElementById('cat').innerHTML = renderCat(this);
+            
             html += "<tr>";
             // image
             html += "<td>";
