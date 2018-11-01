@@ -17,8 +17,9 @@
 </head>
 <body id="page-top">
 
+<div id = "result"></div>
 
-<div class="col-md-6">
+<div class="col-md-6" id = "result">
     <div class="card">
         <div class="card-header">
         </div>
@@ -75,9 +76,9 @@
         this.datastore("content").readBranch("master").queryNodes({
             "_type": "store:author"
         }).each(function() {
-            var template = document.getElementById('some').innerHTML;
-            var renderCat = Handlebars.compile(template);
-            document.getElementById('cat').innerHTML = renderCat(this);
+            // var template = document.getElementById('some').innerHTML;
+            // var renderCat = Handlebars.compile(template);
+            // document.getElementById('cat').innerHTML = renderCat(this);
 
             html += "<tr>";
             // image
