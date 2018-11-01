@@ -29,7 +29,7 @@
                 var div = document.createElement('div');
                 var count = document.createTextNode(this.length);
                 div.append(count);
-                html.append(div);
+                $("#count").append(div);
 
                 $("#result").append(html);
             });
@@ -43,5 +43,9 @@
 <h1>Cloud CMS Example (using Proxy)</h1>
 
 <div id="result"></div>
+
+<div id="count"></div>
+
+
 </body>
 </html>
