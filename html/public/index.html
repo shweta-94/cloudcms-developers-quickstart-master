@@ -5,11 +5,14 @@
     <script src="vendor/jquery/jquery.js"></script>
     <script src="vendor/gitana/gitana.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="vendor/handlebars/handlebars.js"></script>
     <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css"/>
 
 
     <title>All the Authors in your Sample Project</title>
-    <script>
+
+
+    <script id="myTemplate" type="text/x-handlebars-template">
         Gitana.connect({
             "clientKey": "{{{clientKey}}}",
             "clientSecret": "{{{clientSecret}}}",
@@ -26,7 +29,6 @@
                 var template = document.getElementById('template').innerHTML;
                 var renderCat = Handlebars.compile(template);
                 document.getElementById('author').innerHTML = renderCat(this);
-
 
                 html += "<tr>";
                 // image
@@ -45,14 +47,19 @@
                 $("#result").append(html);
             });
         });
+
+        <p>TITLEEEEE: {{title}}</p>
+
+
+        <template id="template">
+            <div class="author">
+            <h1>{{title}}</h1>
+        <p>Description: {{Description}}</p>
+        </div>
+        </template>
+
     </script>
 
-    <template id="template">
-        <div class="author">
-            <h1>{{title}}</h1>
-            <p>Description: {{Description}}</p>
-        </div>
-    </template>
 
 
 </head>
