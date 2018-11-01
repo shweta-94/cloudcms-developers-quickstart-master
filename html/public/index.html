@@ -55,6 +55,10 @@
             html += "</td>";
             html += "</tr>";
         }).then(function() {
+            var template = document.getElementById('some').innerHTML;
+            var renderCat = Handlebars.compile(template);
+            document.getElementById('cat').innerHTML = renderCat(this);
+            
             html += "</table>";
             $("#result").append(html);
         });
