@@ -59,7 +59,15 @@
         </template>
 
     </script>
-
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.4/handlebars.min.js"></script>
+    <script id="item-template" type="text/x-handlebars-template">
+        <table class="score">
+            <tr>
+                <td colspan="3" class="description">{{title}}</td>
+            </tr>
+            <tr>{{description}}</tr>
+        </table>
+    </script>
 
 
 </head>
