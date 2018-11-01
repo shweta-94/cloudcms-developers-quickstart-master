@@ -35,6 +35,9 @@
                 var renderCat = Handlebars.compile(template);
                 html = renderCat(this);
 
+            console.log("this" ,this);
+            console.log("html1" ,html);
+
                 html += "<tr>";
                 // image
                 html += "<td>";
@@ -47,6 +50,8 @@
                 html += "</tr>";
             }).then(function() {
                 html += "</table>";
+
+                console.log("html2" ,html);
 
                 $("#result").append(html);
             });
