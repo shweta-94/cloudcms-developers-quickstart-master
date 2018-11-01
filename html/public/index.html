@@ -17,14 +17,14 @@
 </head>
 <body>
 
-<ul class="list-group">
-    <li class="list-group-item active">{{title}}</li>
-</ul>
-
-
+<div id="some">
     <div id="cat">
         <h1>{{title}}</h1>
     </div>
+</div>
+
+
+
 
 </body>
 
@@ -41,7 +41,7 @@
         this.datastore("content").readBranch("master").queryNodes({
             "_type": "store:author"
         }).each(function() {
-            var template = document.getElementById('list-group').innerHTML;
+            var template = document.getElementById('some').innerHTML;
             var renderCat = Handlebars.compile(template);
             document.getElementById('cat').innerHTML = renderCat(this);
             
