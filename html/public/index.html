@@ -5,9 +5,10 @@
     <script src="vendor/jquery/jquery.js"></script>
     <script src="vendor/gitana/gitana.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="vendor/handlebars/handlebars.js"></script>
     <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css"/>
 
+    <script src="vendor/handlebars"></script>
+    <script src="bower_components/handlebars"></script>
 
     <title>All the Authors in your Sample Project</title>
 
@@ -33,13 +34,11 @@
                 html += "<tr>";
                 // image
                 html += "<td>";
-                <!--html += "<img height='100' width='100' src='http://localhost/proxy/repositories/" + this.getRepositoryId() + "/branches/" + this.getBranchId() + "/nodes/" + this.Image.id + "/attachments/default'> ";-->
                 html += "</br>";
                 html += "</br>";
                 html += "</td>";
                 html += "<td>";
                 html += "<h3>" + this.title + "</h3>";
-                <!--html += "<p>" + this.Description + "</p>";-->
                 html += "</td>";
                 html += "</tr>";
             }).then(function() {
@@ -58,15 +57,6 @@
         </div>
         </template>
 
-    </script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.4/handlebars.min.js"></script>
-    <script id="item-template" type="text/x-handlebars-template">
-        <table class="score">
-            <tr>
-                <td colspan="3" class="description">{{title}}</td>
-            </tr>
-            <tr>{{description}}</tr>
-        </table>
     </script>
 
 
