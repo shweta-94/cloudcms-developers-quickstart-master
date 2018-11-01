@@ -23,19 +23,13 @@
             var html = "<table>";
             this.datastore("content").readBranch("master").queryNodes({
                 "_type": "store:author"
-            }).each(function() {
-
-                html += "<tr>";
-                html += "<td>";
-                html += "</br>";
-                html += "</br>";
-                html += "</td>";
-                html += "<td>";
-                html += "<h3>" + this.title + "</h3>";
-                html += "</td>";
-                html += "</tr>";
             }).then(function() {
                 html += "</table>";
+
+                var div = document.createElement('div');
+                var count = document.createTextNode(this.length);
+                div.append(count);
+                html.append(div);
 
                 $("#result").append(html);
             });
