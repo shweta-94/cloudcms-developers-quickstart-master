@@ -13,7 +13,7 @@
     <title>All the Authors in your Sample Project</title>
 
 
-    <script id="template" type="text/x-handlebars-template">
+    <script>
         Gitana.connect({
             "clientKey": "{{{clientKey}}}",
             "clientSecret": "{{{clientSecret}}}",
@@ -26,16 +26,6 @@
             this.datastore("content").readBranch("master").queryNodes({
                 "_type": "store:author"
             }).each(function() {
-
-                <div class="author">
-                    <h1>{{title}}</h1>
-                </div>
-
-                console.log("this", this);
-
-                var template = document.getElementById('template').innerHTML;
-                var renderCat = Handlebars.compile(template);
-                document.getElementById('author').innerHTML = renderCat(this);
 
                 html += "<tr>";
                 // image
@@ -52,8 +42,6 @@
                 $("#result").append(html);
             });
         });
-
-        <p>TITLEEEEE: {{title}}</p>
     </script>
 
 
