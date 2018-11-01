@@ -13,7 +13,7 @@
     <title>All the Authors in your Sample Project</title>
 
 
-    <script>
+    <script id="template" type="text/x-handlebars-template">
         Gitana.connect({
             "clientKey": "{{{clientKey}}}",
             "clientSecret": "{{{clientSecret}}}",
@@ -27,6 +27,16 @@
                 "_type": "store:author"
             }).each(function() {
 
+                <div class="author">
+                    <h1>{{title}}</h1>
+                </div>
+
+                console.log("this", this);
+
+                var template = document.getElementById('template').innerHTML;
+                var renderCat = Handlebars.compile(template);
+                html = renderCat(this);
+
                 html += "<tr>";
                 // image
                 html += "<td>";
@@ -39,15 +49,19 @@
                 html += "</tr>";
             }).then(function() {
                 html += "</table>";
+
                 $("#result").append(html);
             });
         });
+
+        <p>TITLEEEEE: {{title}}</p>
     </script>
 
 
 </head>
 <body>
 <h1>Cloud CMS Example (using Proxy)</h1>
+
 <div id="result"></div>
 </body>
 </html>
