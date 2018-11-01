@@ -23,7 +23,7 @@
         }, function(err) {
             var html = "<table>";
             this.datastore("content").readBranch("master").queryNodes({
-                "_type": "my:author"
+                "_type": "store:author"
             }).each(function() {
 
                 var template = document.getElementById('template').innerHTML;
@@ -33,13 +33,13 @@
                 html += "<tr>";
                 // image
                 html += "<td>";
-                html += "<img height='100' width='100' src='http://localhost/proxy/repositories/" + this.getRepositoryId() + "/branches/" + this.getBranchId() + "/nodes/" + this.Image.id + "/attachments/default'> ";
+                <!--html += "<img height='100' width='100' src='http://localhost/proxy/repositories/" + this.getRepositoryId() + "/branches/" + this.getBranchId() + "/nodes/" + this.Image.id + "/attachments/default'> ";-->
                 html += "</br>";
                 html += "</br>";
                 html += "</td>";
                 html += "<td>";
                 html += "<h3>" + this.title + "</h3>";
-                html += "<p>" + this.Description + "</p>";
+                <!--html += "<p>" + this.Description + "</p>";-->
                 html += "</td>";
                 html += "</tr>";
             }).then(function() {
