@@ -13,51 +13,53 @@
 
     <h1>Cloud CMS Example (using Proxy)</h1>
 
-    <div id="result"></div>
 
-    <div id="count"></div>
 
-    <template id="cat-template">
-        <div id="cat">
-            <h1>{{title}}</h1>
-        </div>
-    </template>
 
-    <script>
-        Gitana.connect({
-            "clientKey": "{{{clientKey}}}",
-            "clientSecret": "{{{clientSecret}}}",
-            "username": "{{{username}}}",
-            "password": "{{{password}}}",
-            "baseURL": "{{{baseURL}}}",
-            "application": "{{{application}}}"
-        }, function(err) {
-            var html = "<table>";
-            this.datastore("content").readBranch("master").queryNodes({
-                "_type": "store:author"
-            }).then(function() {
-
-                var template = document.getElementById('cat-template').innerHTML;
-                var renderCat = Handlebars.compile(template);
-                document.getElementById('cat').innerHTML = renderCat(this);
-
-                html += "</table>";
-
-                var div = document.createElement('div');
-                var count = document.createTextNode(this.title);
-                div.append(count);
-                $("#count").append(div);
-
-                $("#result").append(html);
-            });
-        });
-
-    </script>
 
 
 </head>
 <body>
+<div id="result"></div>
 
+<div id="count"></div>
+
+<template id="cat-template">
+    <div id="cat">
+        <h1>{{title}}</h1>
+    </div>
+</template>
 
 </body>
+
+<script>
+    Gitana.connect({
+        "clientKey": "{{{clientKey}}}",
+        "clientSecret": "{{{clientSecret}}}",
+        "username": "{{{username}}}",
+        "password": "{{{password}}}",
+        "baseURL": "{{{baseURL}}}",
+        "application": "{{{application}}}"
+    }, function(err) {
+        var html = "<table>";
+        this.datastore("content").readBranch("master").queryNodes({
+            "_type": "store:author"
+        }).then(function() {
+
+            var template = document.getElementById('cat-template').innerHTML;
+            var renderCat = Handlebars.compile(template);
+            document.getElementById('cat').innerHTML = renderCat(this);
+
+            html += "</table>";
+
+            var div = document.createElement('div');
+            var count = document.createTextNode(this.title);
+            div.append(count);
+            $("#count").append(div);
+
+            $("#result").append(html);
+        });
+    });
+
+</script>
 </html>
