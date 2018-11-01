@@ -38,8 +38,11 @@
         this.datastore("content").readBranch("master").queryNodes({
             "_type": "store:author"
         }).each(function() {
-            var template = document.getElementById('cat-template').innerHTML;
-            var renderCat = Handlebars.compile(template);
+            // var template = document.getElementById('cat-template').innerHTML;
+            // var renderCat = Handlebars.compile(template);
+            // var cat = document.getElementById('cat').innerHTML;
+            // cat = renderCat(this);
+            //
             document.getElementById('cat').innerHTML = renderCat(this);
             
             html += "<tr>";
