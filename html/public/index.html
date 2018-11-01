@@ -42,7 +42,7 @@
             var template = document.getElementById('some').innerHTML;
             var renderCat = Handlebars.compile(template);
             document.getElementById('cat').innerHTML = renderCat(this);
-            
+
             html += "<tr>";
             // image
             html += "<td>";
@@ -52,6 +52,13 @@
             html += "</td>";
             html += "<td>";
             html += "<h3>" + this.title + "</h3>";
+
+
+            html += "<ul class=" + "list-group" + ">";
+            html += "<li>" + this.title + "</li>";
+            html += "</ul>";
+
+
             html += "</td>";
             html += "</tr>";
         }).then(function() {
