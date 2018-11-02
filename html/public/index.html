@@ -18,9 +18,13 @@
 <body id="page-top">
 
 <div id="new-list">
-    {{#each array}}
-    <p>Title: {{title}}</p>
-    <p>Qname: {{_qname}}</p>
+    {{#each array.items}}
+    <li>
+        <p>Title: {{title}}</p>
+        <span>{{title}}</span>
+    </li>
+    <!--<p>Title: {{title}}</p>-->
+    <!--<p>Qname: {{_qname}}</p>-->
     {{/each}}
 </div>
 
