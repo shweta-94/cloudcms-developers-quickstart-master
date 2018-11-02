@@ -16,24 +16,7 @@
     <button type="button" onclick="myFunction()">Try it</button>
     <p id="demo">A Paragraph.</p>
 
-    <div id="DocumentResults"></div>
-    <script id="document-template" type="text/x-handlebars-template">
-        <div>
-            {{#each this}}
-            <div class="row">
-                <div class="col-md-12">
-                    <h2>{{Category}}</h2>
-                    {{#DocumentList}}
-                    <p>{{DocumentName}} at {{DocumentLocation}}</p>
-                    {{/DocumentList}}
-                </div>
-            </div>
-            {{/each}}
 
-            <p>There are no documents available at this time</p>
-
-        </div>
-    </script>
 
 
 </head>
@@ -42,6 +25,25 @@
 <div id="new-list">
     <p>ere : {{title}}</p>
 </div>
+
+<div id="DocumentResults"></div>
+<script id="document-template" type="text/x-handlebars-template">
+    <div>
+        {{#each this}}
+        <div class="row">
+            <div class="col-md-12">
+                <h2>{{Category}}</h2>
+                {{#DocumentList}}
+                <p>{{DocumentName}} at {{DocumentLocation}}</p>
+                {{/DocumentList}}
+            </div>
+        </div>
+        {{/each}}
+
+        <p>There are no documents available at this time</p>
+
+    </div>
+</script>
 
 
 </body>
