@@ -53,7 +53,7 @@
         }).then(function() {
             var template = document.getElementById('cat-list').innerHTML;
             var renderCats = Handlebars.compile(template);
-            document.getElementById('cat-list').innerHTML = renderCats({
+            document.getElementById('cat').innerHTML = renderCats({
                 cats: array
             });
 
