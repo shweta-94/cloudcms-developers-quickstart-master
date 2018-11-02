@@ -50,7 +50,7 @@
             var div = document.getElementById('list').innerHTML;
             var renderCats = Handlebars.compile(div);
             document.getElementById('cat').innerHTML = renderCats({
-                cats: myCats
+                cats: this
             });
             //
             // document.getElementById('cat').innerHTML = {
