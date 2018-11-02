@@ -14,20 +14,20 @@
 </head>
 <body>
 
-<script id="document-template" type="text/x-handlebars-template">
-    <div style="display:none">
+<div id="new-list" style="display:none">
 
-        {{#each items}}
-        <li>
-            <p>Title: {{title}}</p>
-            <span>{{title}}</span>
-        </li>
+    {{#each items}}
+    <li>
+        <p>Title: {{title}}</p>
+        <span>{{title}}</span>
+    </li>
 
-        {{/each}}
-    </div>
-</script>
+    {{/each}}
+</div>
+<div id="result">
 
-
+</div>
+</div>
 </body>
 
 <script type="text/javascript">
@@ -48,13 +48,13 @@
             });
 
         }).then(function() {
-            var templateHtml = $("#document-template").html();
+            var templateHtml = $("#new-list").html();
             var templateFn = Handlebars.compile(templateHtml);
             var model = {
                 items : array
             };
             var html = templateFn(model);
-            $("#body").append(html);
+            $("#result").append(html);
         })
     });
 
