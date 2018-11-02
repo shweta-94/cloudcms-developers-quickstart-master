@@ -20,13 +20,7 @@
 <div id="DocumentResults"></div>
 <script id="document-template" type="text/x-handlebars-template">
     <div>
-        <!--{{#each array}}-->
-        <div class="row">
-            <div class="col-md-12">
-                <h2>{{title}}</h2>
-            </div>
-        </div>
-        <!--{{/each}}-->
+        <h2>{{title}}</h2>
 
         <p>There are no documents available at this time</p>
 
@@ -48,23 +42,11 @@
 
         this.datastore("content").readBranch("master").listDefinitions('custom', {
             "limit": -1
-        }).each(function() {
-            array.push({
-                "title": this.title,
-                "value": this._doc
-            });
         }).then(function() {
-            $(function() {
                 var source = $("#document-template").html();
                 var template = Handlebars.compile(source);
                 var html = template(this.title);
                 $('#DocumentResults').html(html);
-            });
-            //
-            // var source = $("#document-template").html();
-            // var template = Handlebars.compile(source);
-            // var html = template(array);
-            // $('#DocumentResults').html(html);
         });
 
             // var template = Handlebars.compile("");
