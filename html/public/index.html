@@ -18,16 +18,12 @@
 <body id="page-top">
 
 <div id="new-list">
-    <!--{{#each array.items}}-->
-    <!--<li>-->
-        <!--<p>Title: {{title}}</p>-->
-        <!--<span>{{title}}</span>-->
-    <!--</li>-->
-    <!--&lt;!&ndash;<p>Title: {{title}}</p>&ndash;&gt;-->
-    <!--&lt;!&ndash;<p>Qname: {{_qname}}</p>&ndash;&gt;-->
-    <!--{{/each}}-->
+    {{#each array.items}}
+    <li>
+        <p>Title: {{title}}</p>
+        <span>{{title}}</span>
+    </li>
 </div>
-
 
 </body>
 
@@ -44,7 +40,10 @@
         this.datastore("content").readBranch("master").listDefinitions('custom', {
             "limit": -1
         }).each(function() {
-            array.push(this.title);
+            array.push(
+                {
+                    "title": this.title
+                });
             array.push(this.getQName());
         }).then(function() {
             document.getElementById('new-list').innerHTML = array;
