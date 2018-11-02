@@ -14,16 +14,19 @@
 </head>
 <body>
 
-<div id="new-list" style="display:none">
+<script id="document-template" type="text/x-handlebars-template">
+    <div style="display:none">
 
-    {{#each items}}
-    <li>
-        <p>Title: {{title}}</p>
-        <span>{{title}}</span>
-    </li>
+        {{#each items}}
+        <li>
+            <p>Title: {{title}}</p>
+            <span>{{title}}</span>
+        </li>
 
-    {{/each}}
-</div>
+        {{/each}}
+    </div>
+</script>
+
 
 </body>
 
@@ -40,13 +43,12 @@
         this.datastore("content").readBranch("master").listDefinitions('custom', {
             "limit": -1
         }).each(function() {
-
             array.push({
                 "title" : this.title
             });
 
         }).then(function() {
-            var templateHtml = $("#new-list").html();
+            var templateHtml = $("#document-template").html();
             var templateFn = Handlebars.compile(templateHtml);
             var model = {
                 items : array
