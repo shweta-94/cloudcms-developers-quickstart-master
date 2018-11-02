@@ -17,6 +17,7 @@
 </head>
 <body id="page-top">
 <section id="content">
+    <div id="new-list"></div>
     <header class="page-header mb30">
         <div class="container">
             <div class="row">
@@ -107,7 +108,7 @@
             array.push(this._doc);
 
         }).then(function() {
-            document.getElementById('boxContent').innerHTML = array;
+            document.getElementById('new-list').innerHTML = array;
             // $("#result").append(html);
         });
     });
