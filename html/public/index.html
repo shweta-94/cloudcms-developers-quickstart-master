@@ -15,17 +15,20 @@
 
 
 </head>
+<body id="page-top">
 
-<body>
-<!--<script id="cat-list" type="text/x-handlebars-template">-->
 
-    <!--{{#each array}}-->
-    <div id = "cat">
-        <h2>{{title}}</h2>
+<div id="cat-list">
+    <!--<h1>{{title}}</h1>-->
+    {{#each this}}
+    <div>
+
+    <h2>{{length}}</h2>
+
     </div>
-    <!--{{/each}}-->
+    {{/each}}
 
-<!--</script>-->
+</div>
 
 </body>
 
@@ -42,16 +45,12 @@
         this.datastore("content").readBranch("master").listDefinitions('custom', {
             "limit": -1
         }).each(function() {
-            document.getElementById('cat').innerHTML = this.title;
-            array.push(this.title);
+            array.push({
+                "title": this.title
+            })
+            // document.getElementById('cat-list').innerHTML = this.title ;
         }).then(function() {
-            document.getElementById('cat').innerHTML = array.title;
-            var template = document.getElementById('cat-list').innerHTML;
-            var renderCats = Handlebars.compile(template);
-            document.getElementById('cat').innerHTML = renderCats({
-                array: array
-            });
-            // document.getElementById('cat-list').innerHTML = array ;
+            document.getElementById('cat-list').innerHTML = array ;
         })
     });
 
