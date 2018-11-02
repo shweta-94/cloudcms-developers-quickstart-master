@@ -13,22 +13,36 @@
 
 </head>
 <body>
+
+<div id="DocumentResults"></div>
+<script id="new-list" type="text/x-handlebars-template">
+    <div>
+        {{#each items}}
+        <div class="row">
+            <div class="col-md-12">
+                <h2>{{title}}</h2>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</script>
+
 <h1>List of your custom definitions</h1>
 
 
 
 
-<div id="new-list" style="display:none">
-    {{#each items}}
-    <li>
-        <p>Title: {{title}}</p>
-        <span>{{title}}</span>
-    </li>
+<!--<div id="new-list" style="display:none">-->
+    <!--{{#each items}}-->
+    <!--<li>-->
+        <!--<p>Title: {{title}}</p>-->
+        <!--<span>{{title}}</span>-->
+    <!--</li>-->
 
-    {{/each}}
-</div>
+    <!--{{/each}}-->
+<!--</div>-->
 
-</div>
+<!--</div>-->
 </body>
 
 <script type="text/javascript">
@@ -55,7 +69,7 @@
                 items : array
             };
             var html = templateFn(model);
-            $("#result").append(html);
+            $("#DocumentResults").html(html);
         })
     });
 
