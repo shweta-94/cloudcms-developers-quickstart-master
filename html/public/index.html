@@ -32,7 +32,7 @@
 
 <template id="new-list-template">
     {{#each cats}}
-    <div class="new-list">
+    <div id="new-list">
         <h1>{{title}}</h1>
     </div>
     {{/each}}
@@ -62,7 +62,7 @@
             var template = document.getElementById('new-list-template').innerHTML;
             var renderCats = Handlebars.compile(template);
             document.getElementById('new-list').innerHTML = renderCats({
-                cats: array
+                cats: array.title
             });
         })
     });
