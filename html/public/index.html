@@ -20,13 +20,10 @@
 <div id="DocumentResults"></div>
 <script id="document-template" type="text/x-handlebars-template">
     <div>
-        {{#each this}}
-        <div class="row">
+        {{#each array}}
+        <div>
             <div class="col-md-12">
                 <h2>{{title}}</h2>
-                {{#DocumentList}}
-                <p>{{DocumentName}} at {{DocumentLocation}}</p>
-                {{/DocumentList}}
             </div>
         </div>
         {{/each}}
@@ -39,6 +36,7 @@
 </body>
 
 <script type="text/javascript">
+    var array = [];
     Gitana.connect({
         "clientKey": "{{{clientKey}}}",
         "clientSecret": "{{{clientSecret}}}",
@@ -47,11 +45,9 @@
         "baseURL": "{{{baseURL}}}",
         "application": "{{{application}}}"
     }, function(err) {
-        var array = [];
         this.datastore("content").readBranch("master").listDefinitions('custom', {
             "limit": -1
         }).each(function() {
-
             array.push({
                 "title": this.title,
                 "value": this._doc
@@ -59,7 +55,9 @@
         }).then(function() {
             var source = $("#document-template").html();
             var template = Handlebars.compile(source);
-            var html = template(array);
+            var html = template({
+                array: array
+            });
             $('#DocumentResults').html(html);
         });
 
