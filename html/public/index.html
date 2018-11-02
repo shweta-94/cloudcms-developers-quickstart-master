@@ -43,8 +43,12 @@
         this.datastore("content").readBranch("master").listDefinitions('custom', {
             "limit": -1
         }).each(function() {
-            array.push(this.title);
-            array.push(this.getQName());
+
+            array.push({
+                "title" : this.title
+            });
+            // array.push(this.title);
+            // array.push(this.getQName());
         }).then(function() {
             document.getElementById('new-list').innerHTML = array;
         })
