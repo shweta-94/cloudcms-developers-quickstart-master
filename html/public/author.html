@@ -20,7 +20,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <h1>
-                            <a href="/catalog/index.html">Product Catalog</a>
+                            <a href="/catalog/index.html">Authors</a>
                         </h1>
                     </div>
                 </div>
@@ -44,7 +44,8 @@
                     <!-- items -->
                     <div class="portfolio-items isotopeWrapper clearfix imgHover neko-hover-1" id="3">
 
-                        {@query type="catalog:product" sort="title"}
+                        <p><a href="#" onClick="myFunction();">Text</a></p>
+
                         {#rows}
                         <article class="col-sm-4 isotopeItem {#categories}{.} {/categories}">
                             <div class="pinBox">
@@ -82,15 +83,6 @@
             </div>
         </section>
     </section>
-
-    <template id="cat-template">
-        <div class="cat">
-            <h1>{{title}}</h1>
-        </div>
-    </template>
-
-
-
 </head>
 <body id="page-top">
 
@@ -111,7 +103,6 @@
             "application": "{{{application}}}"
         }, function (err) {
             var array = [];
-            var rows = [];
             this.datastore("content").readBranch("master").listDefinitions('custom', {
                 "limit": -1
             }).each(function () {
@@ -123,9 +114,11 @@
                 var template = document.getElementById('content').innerHTML;
                 var renderCat = Handlebars.compile(template);
                 document.getElementById('boxContent').innerHTML = renderCat(array);
-
+                return array;
             })
         });
+
+
     }
 </script>
 </html>
