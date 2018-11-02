@@ -15,7 +15,7 @@
 <body>
 
 <div id="DocumentResults"></div>
-<script id="new-list" type="text/x-handlebars-template">
+<div id="new-list">
     <div>
         {{#each items}}
         <div class="row">
@@ -25,7 +25,7 @@
         </div>
         {{/each}}
     </div>
-</script>
+</div>
 
 </body>
 
@@ -46,7 +46,8 @@
                 "title" : this.title
             });
         }).then(function() {
-            var templateHtml = $("#new-list").html();
+            // var templateHtml = $("#new-list").html();
+            var templateHtml = document.getElementById('new-list').innerHTML;
             var templateFn = Handlebars.compile(templateHtml);
             var model = {
                 items : array
