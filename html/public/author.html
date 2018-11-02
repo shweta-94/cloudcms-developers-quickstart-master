@@ -44,16 +44,23 @@
         }).each(function() {
             array.push(this.title);
         }).then(function() {
-            $("#DocumentResults").append(array);
-            document.getElementById('DocumentResults').innerHTML = array;
-            // var templateHtml = $("#new-list").html();
+            // $("#DocumentResults").append(array);
             var templateHtml = document.getElementById('new-list').innerHTML;
             var templateFn = Handlebars.compile(templateHtml);
             var model = {
                 items : array
             };
             var html = templateFn(model);
-            $("#DocumentResults").append(html);
+
+            document.getElementById('DocumentResults').innerHTML = html;
+            // var templateHtml = $("#new-list").html();
+            // var templateHtml = document.getElementById('new-list').innerHTML;
+            // var templateFn = Handlebars.compile(templateHtml);
+            // var model = {
+            //     items : array
+            // };
+            // var html = templateFn(model);
+            // $("#DocumentResults").append(html);
         })
     });
 
