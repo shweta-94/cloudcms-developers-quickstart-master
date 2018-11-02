@@ -35,7 +35,7 @@
     {{#each array.items}}
     <!--<div>-->
 
-    <h2>{{array.title}}</h2>
+    <h2>{{title}}</h2>
 
     <!--</div>-->
     {{/each}}
@@ -59,9 +59,7 @@
             "limit": -1
         }).each(function() {
             document.getElementById('cat-list').innerHTML = this.title ;
-            array.push({
-                "title": this.title
-            })
+            array.push(this.title)
             // document.getElementById('cat-list').innerHTML = this.title ;
         }).then(function() {
             // var template = document.getElementById('new-list-template').innerHTML;
