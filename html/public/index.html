@@ -19,7 +19,15 @@
 
 
 <div id="cat-list">
-    <h1>{{title}}</h1>
+    <!--<h1>{{title}}</h1>-->
+    {{#each this}}
+    <div class="row">
+        <div class="col-md-12">
+            <h2>{{length}}</h2>
+        </div>
+    </div>
+    {{/each}}
+
 </div>
 
 </body>
@@ -37,9 +45,12 @@
         this.datastore("content").readBranch("master").listDefinitions('custom', {
             "limit": -1
         }).each(function() {
-            document.getElementById('cat-list').innerHTML = this.title ;
+            array.push({
+                "title": this.title
+            })
+            // document.getElementById('cat-list').innerHTML = this.title ;
         }).then(function() {
-
+            document.getElementById('cat-list').innerHTML = this ;
         })
     });
 
