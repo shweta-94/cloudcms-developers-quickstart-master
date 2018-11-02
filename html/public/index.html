@@ -21,9 +21,7 @@
 <div id="cat-list">
     <!--<h1>{{title}}</h1>-->
     {{#each cats.items}}
-    <div class="cat">
-        <h1>{{title}}</h1>
-    </div>
+    <h1>{{title}}</h1>
     {{/each}}
 </div>
 
@@ -51,15 +49,34 @@
                 "value": this._doc
             });
         }).then(function() {
-            var template = document.getElementById('cat-list').innerHTML;
-            var renderCats = Handlebars.compile(template);
-            document.getElementById('cat').innerHTML = renderCats({
-                cats: array
-            });
 
-            // document.getElementById('cat').innerHTML = {
+            var template = Handlebars.compile("");
+
+            document.getElementById('cat').innerHTML = template({
+                    cats: array
+                });
+
+            // var model = req.model;
+            // if (!model) {
+            //     model = {};
+            // }
+            //
+            // model.title = "Installing Sample Project";
+            // model.message = "Please wait while the sample project is installed";
+            // model.jobId = jobId;
+            //
+            // var result = template(model);
+
+
+            // document.getElementById('cat-list').innerHTML = {
             //     cats: array
             // };
+            // // var renderCats = Handlebars.compile(menu);
+            // document.getElementById('cat').innerHTML = renderCats({
+            //     cats: array
+            // });
+
+            // document.getElementById('cat-list').innerHTML = array;
             //
             // document.getElementById('cat').innerHTML = {
             //     cats: this
