@@ -30,13 +30,18 @@
 
 </div>
 
-<template id="new-list-template">
-    {{#each cats}}
-    <div id="new-list">
-        <h1>{{title}}</h1>
-    </div>
-    {{/each}}
-</template>
+<div id="new-list">
+    <!--<h1>{{title}}</h1>-->
+    <!--{{#each this}}-->
+    <!--<div>-->
+
+    <h2>{{title}}</h2>
+
+    <!--</div>-->
+    <!--{{/each}}-->
+
+</div>
+
 
 </body>
 
@@ -59,11 +64,9 @@
             })
             // document.getElementById('cat-list').innerHTML = this.title ;
         }).then(function() {
-            var template = document.getElementById('new-list-template').innerHTML;
-            var renderCats = Handlebars.compile(template);
-            document.getElementById('new-list').innerHTML = renderCats({
-                cats: array.title
-            });
+            // var template = document.getElementById('new-list-template').innerHTML;
+            // var renderCats = Handlebars.compile(template);
+            document.getElementById('new-list').innerHTML = array[0].title;
         })
     });
 
