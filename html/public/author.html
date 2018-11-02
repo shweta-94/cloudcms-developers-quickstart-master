@@ -19,7 +19,7 @@
 
 <div id = "result"></div>
 
-<div class="col-md-6" id = "result">
+<div class="col-md-6">
     <div class="card">
         <div class="card-header">
         </div>
@@ -73,8 +73,7 @@
         "application": "{{{application}}}"
     }, function(err) {
         var html = "<table>";
-        this.datastore("content").readBranch("master").queryNodes({
-            "_type": "store:author"
+        this.datastore("content").readBranch("master").listDefinitions({
         }).each(function() {
             // var template = document.getElementById('some').innerHTML;
             // var renderCat = Handlebars.compile(template);

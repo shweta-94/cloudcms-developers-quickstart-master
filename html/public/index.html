@@ -22,45 +22,8 @@
         <!--<h1>{{title}}</h1>-->
     <!--</div>-->
 <!--</div>-->
-<!--<div id="result"></div>-->
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
-    <a class="navbar-brand js-scroll-trigger" href="#page-top">
-        <span class="d-block d-lg-none">Clarence Taylor</span>
-        <span class="d-none d-lg-block">
-          <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="img/profile.jpg" alt="">
-        </span>
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="http://localhost/quickstart/view/html/public/author.html">Author</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="#experience">Book</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="#education">Catalog Person</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="#skills">Catalog Product</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="#interests">Catalog Product Review</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="#interests">Category</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" href="#interests">Guide City</a>
-            </li>
-        </ul>
-    </div>
-</nav>
-
+<div id="result"></div>
 
 </body>
 
@@ -74,12 +37,9 @@
         "application": "{{{application}}}"
     }, function(err) {
         var html = "<table>";
-        this.datastore("content").readBranch("master").queryNodes({
-            "_type": "store:author"
+        this.datastore("content").readBranch("master").listDefinitions({
+
         }).each(function() {
-            var template = document.getElementById('some').innerHTML;
-            var renderCat = Handlebars.compile(template);
-            document.getElementById('cat').innerHTML = renderCat(this);
 
             html += "<tr>";
             // image
@@ -88,12 +48,12 @@
             html += "</br>";
             html += "</td>";
             html += "<td>";
-            // html += "<h3>" + this.title + "</h3>";
+            html += "<h3>" + this.title + "</h3>";
 
 
             html += "<ul class=" + "list-group" + ">";
             html += "<li>" + this.title;
-            html += "<img height='100' width='100' src='http://localhost/proxy/repositories/" + this.getRepositoryId() + "/branches/" + this.getBranchId() + "/nodes/" + this.getId() + "/attachments/default'> ";
+            // html += "<img height='100' width='100' src='http://localhost/proxy/repositories/" + this.getRepositoryId() + "/branches/" + this.getBranchId() + "/nodes/" + this.getId() + "/attachments/default'> ";
             html += "</li>";
             html += "</ul>";
 
