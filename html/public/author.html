@@ -17,92 +17,12 @@
     <p id="demo">A Paragraph.</p>
 
 
-
-
 </head>
 <body id="page-top">
 
 <div id="new-list">
-    <p>ere : {{title}}</p>
-</div>
-<div>
-
-    {{#exists buttons}}
-    <div class="row">
-
-        <!-- left -->
-        <div class="btn-group pull-left" data-toggle="buttons-checkbox">
-            {{#each buttons}}
-            {{#equalOrEmpty align "left"}}
-            <button type="button" class="btn btn-default btn-lg {{class}}">{{label}}</button>
-            {{/equalOrEmpty}}
-            {{/each}}
-        </div>
-
-        <!-- right -->
-        <div class="btn-group pull-right" data-toggle="buttons-checkbox">
-            {{#each buttons}}
-            {{#equal align "right"}}
-            <button type="button" class="btn btn-default btn-lg {{class}}">{{label}}</button>
-            {{/equal}}
-            {{/each}}
-        </div>
-
-    </div>
-
-    {{/exists}}
-
-
-
-
-    {{#each rows}}
-
-    <div class="row">
-
-        {{#each columns}}
-
-        <div class="{{#if css}}{{css}}{{/if}}">
-
-            {{#each dashlets}}
-
-            {{#exists type}}
-            <div class="dashlet {{type}}">
-
-                {{#exists chrome}}
-                <div class="dashlet-header">
-                    <div class="dashlet-title">{{title}}</div>
-                    {{#exists buttons}}
-                    {{#each buttons}}
-                    <div class="btn-group pull-right">
-                        <button type="button" class="btn btn-default {{class}}" data-dashlet-button-key="{{key}}">{{label}}</button>
-                    </div>
-                    {{/each}}
-                    {{/exists}}
-                </div>
-                {{/exists}}
-                {{#exists chrome}}
-                <div class="dashlet-body">
-                    {{/exists}}
-                    <gadget type="{{type}}" {{#exists id}}id="{{id}}"{{/exists}}></gadget>
-                    {{#exists chrome}}
-                </div>
-                {{/exists}}
-
-            </div>
-            {{/exists}}
-
-            {{/each}}
-
-        </div>
-
-        {{/each}}
-
-    </div>
-
-    {{/each}}
 
 </div>
-
 
 
 </body>
@@ -124,142 +44,11 @@
                 array.push(this.title);
                 array.push(this.getQName());
             }).then(function () {
-                (function (root, factory)
-                {
-                    if (typeof define === 'function' && define.amd && !(root && typeof(root.umd) != "undefined") && !root.umd)
-                    {
-                        // AMD
-                        define(function(require, exports, module) {
-
-                            require("css!ratchet/dynamic/common.css");
-                            require("css!ratchet/dynamic/dashboard.css");
-
-                            var html = require("text!ratchet/dynamic/dashboard.html");
-                            var Ratchet = require("ratchet/web");
-
-                            require("ratchet/handlebars");
-                            require("bootstrap");
-
-                            return factory(Ratchet, html);
-                        });
-                    }
-                    else
-                    {
-                        return factory(root.Ratchet, "./dashboard.html");
-                    }
-
-                }(this, function(Ratchet, html) {
-
-                    return Ratchet.Gadgets.Dashboard = Ratchet.DynamicRegistry.register("dashboard", Ratchet.AbstractDynamicGadget.extend({
-
-                        TEMPLATE: html,
-
-                        /**
-                         * Extension point for letting configuration service load model configuration.
-                         *
-                         * @param model
-                         */
-                        applyDynamicConfiguration: function(model)
-                        {
-                        },
-
-                        prepareModel: function(el, model, callback)
-                        {
-                            var self = this;
-
-                            this.base(el, model, function() {
-
-                                self.applyDynamicConfiguration(model);
-
-                                if (model.rows && model.rows.length > 0)
-                                {
-                                    // walk all dashlets and bind into observables
-                                    for (var i = 0; i < model.rows.length; i++)
-                                    {
-                                        var row = model.rows[i];
-
-                                        if (row.columns && row.columns.length > 0)
-                                        {
-                                            for (var j = 0; j < row.columns.length; j++)
-                                            {
-                                                var column = row.columns[j];
-
-                                                if (column.dashlets && column.dashlets.length > 0)
-                                                {
-                                                    for (var k = 0; k < column.dashlets.length; k++)
-                                                    {
-                                                        var dashlet = column.dashlets[k];
-
-                                                        if (!dashlet.config) {
-                                                            dashlet.config = {};
-                                                        }
-
-                                                        // DYNAMIC GADGET INSTANCE
-                                                        var dashletGadget = null;
-                                                        if (Ratchet.DashletGadgets) {
-                                                            dashletGadget = Ratchet.DashletGadgets[dashlet.type];
-                                                        }
-                                                        if (dashletGadget) {
-                                                            // register an instance of the dashlet as a gadget instance
-                                                            var newType = (function (gadgetConfiguration, dashletGadget) {
-
-                                                                // using meta-programming, create instances of gadget controllers
-                                                                // config is loaded by gadget on configure()
-                                                                return dashletGadget.extend({
-
-                                                                    setup: function () {
-                                                                        this.get(this.index);
-                                                                    },
-
-                                                                    configureDefault: function () {
-
-                                                                        this.base();
-
-                                                                        // push page configuration into config service
-                                                                        this.config(gadgetConfiguration);
-                                                                    },
-
-                                                                    afterSwap: function(el, model, context, callback)
-                                                                    {
-                                                                        var self = this;
-
-                                                                        this.base(el, model, context, function() {
-
-                                                                            // trigger resize event
-                                                                            $(window).trigger("resize");
-
-                                                                            callback();
-                                                                        });
-                                                                    }
-
-                                                                });
-
-                                                            }(dashlet.config, dashletGadget));
-
-                                                            Ratchet.GadgetRegistry.register(dashlet.type, dashlet.id, newType);
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-
-                                callback();
-
-                            });
-                        }
-
-                    }));
-
-                }));
-
                 document.getElementById('new-list').innerHTML = array;
                 document.getElementById("demo").innerHTML = "Paragraph changed.";
                 return array
             })
         });
     }
-
 </script>
 </html>
