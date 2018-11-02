@@ -12,8 +12,9 @@
     <title>Authors Page</title>
 
     <h1>List of All Authors</h1>
+</head>
+<body>
 
-    <div id="DocumentResults"></div>
     <script id="document-template" type="text/x-handlebars-template">
         <div>
             <h2> erere </h2>
@@ -21,9 +22,6 @@
             <div class="row">
                 <div class="col-md-12">
                     <h2>{{title}}</h2>
-                    <!--{{#DocumentList}}-->
-                    <!--<p>{{DocumentName}} at {{DocumentLocation}}</p>-->
-                    <!--{{/DocumentList}}-->
                 </div>
             </div>
             {{/each}}
@@ -31,6 +29,9 @@
     </script>
 
     <div id="new-list"></div>
+
+    <div id="DocumentResults"></div>
+</body>
 
 
 <script type="text/javascript">
@@ -43,11 +44,10 @@
         "baseURL": "{{{baseURL}}}",
         "application": "{{{application}}}"
     }, function(err) {
-        var html = "<table>";
+
         this.datastore("content").readBranch("master").queryNodes({
             "_type": "store:author"
         }).each(function() {
-
             array.push({
                 "title" : this.title
             });
@@ -59,7 +59,7 @@
             var html = template({
                 apidata: array
             });
-            $('#DocumentResults').html(html)
+            $('#DocumentResults').html(html);
 
             document.getElementById('new-list').innerHTML = array;
             // $("#result").append(html);
