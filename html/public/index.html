@@ -45,7 +45,6 @@
             array.push({
                 "title" : this.title
             });
-
         }).then(function() {
             var templateHtml = $("#new-list").html();
             var templateFn = Handlebars.compile(templateHtml);
@@ -53,13 +52,10 @@
                 items : array
             };
             var html = templateFn(model);
-            $("#DocumentResults").append(html);
+            $("#DocumentResults").append(templateHtml);
         })
     });
 
 </script>
-
-<div id="result">
-</div>
 
 </html>
