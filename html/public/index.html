@@ -17,16 +17,11 @@
 </head>
 <body id="page-top">
 
-
-<div id="cat-list">
-    <h1>{{title}}</h1>
-    <!--{{#each cats.items}}-->
-    <!--<h1>{{title}}</h1>-->
-    <!--{{/each}}-->
+<div id="cat">
+    {{#each this}}
+        <div class="row"></div>
+    {{/each}}
 </div>
-
-
-<!--<div id="result"></div>-->
 
 </body>
 
@@ -52,7 +47,7 @@
 
             // var template = Handlebars.compile("");
 
-            document.getElementById('cat-list').innerHTML = array.title ;
+            document.getElementById('cat').innerHTML = this ;
 
             // var model = req.model;
             // if (!model) {
