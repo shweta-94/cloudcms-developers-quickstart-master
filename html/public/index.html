@@ -15,24 +15,16 @@
 
 
 </head>
-<body>
+<body id="page-top">
 
-<div id="cat">
-    {{title}}
+
+<div id="cat-list">
+    <h1>{{title}}</h1>
 </div>
-<!--<script id="document-template" type="text/x-handlebars-template">-->
-    <!--<div>-->
-        <!--<h2>{{title}}</h2>-->
-
-        <!--<p>There are no documents available at this time</p>-->
-
-    <!--</div>-->
-<!--</script>-->
 
 </body>
 
 <script type="text/javascript">
-    var array = [];
     Gitana.connect({
         "clientKey": "{{{clientKey}}}",
         "clientSecret": "{{{clientSecret}}}",
@@ -41,79 +33,19 @@
         "baseURL": "{{{baseURL}}}",
         "application": "{{{application}}}"
     }, function(err) {
-
+        var array = [];
         this.datastore("content").readBranch("master").listDefinitions('custom', {
             "limit": -1
         }).each(function() {
-            document.getElementById('cat').innerHTML = this.title;
 
             array.push({
-                "title" : this.title
-            })
-        }).then(function() {
-                // var source = $("#document-template").html();
-                // var template = Handlebars.compile(source);
-                document.getElementById('cat').innerHTML = array.title;
-                // var html = template(this.title);
-                // $('#DocumentResults').append(html);
+                "title": this.title,
+                "value": this._doc
             });
-        }
-
-            // var template = Handlebars.compile("");
-
-            // document.getElementById('cat').innerHTML = this ;
-
-            // var model = req.model;
-            // if (!model) {
-            //     model = {};
-            // }
-            //
-            // model.title = "Installing Sample Project";
-            // model.message = "Please wait while the sample project is installed";
-            // model.jobId = jobId;
-            //
-            // var result = template(model);
-
-
-            // document.getElementById('cat-list').innerHTML = {
-            //     cats: array
-            // };
-            // // var renderCats = Handlebars.compile(menu);
-            // document.getElementById('cat').innerHTML = renderCats({
-            //     cats: array
-            // });
-
-            // document.getElementById('cat-list').innerHTML = array;
-            //
-            // document.getElementById('cat').innerHTML = {
-            //     cats: this
-            // };
-
-            // document.getElementById('cat').innerHTML = this.title;
-            //
-            // html += "<tr>";
-            // // image
-            // html += "<td>";
-            // html += "</br>";
-            // html += "</br>";
-            // html += "</td>";
-            // html += "<td>";
-            // html += "<h3>" + "TITLE" + this.title + "</h3>";
-            //
-            //
-            // html += "<ul class=" + "list-group" + ">";
-            // html += "<li>" + this.title;
-            //
-            // html += "<h3>" + "Qname" + this.getQName() + "</h3>";
-            // // html += "<img height='100' width='100' src='http://localhost/proxy/repositories/" + this.getRepositoryId() + "/branches/" + this.getBranchId() + "/nodes/" + this.getId() + "/attachments/default'> ";
-            // html += "</li>";
-            // html += "</ul>";
-            //
-            //
-            // html += "</td>";
-            // html += "</tr>";
-        // })
-    );
+        }).then(function() {
+            document.getElementById('cat-list').innerHTML = array.title ;
+        })
+    });
 
 </script>
 </html>
