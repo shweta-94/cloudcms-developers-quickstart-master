@@ -44,9 +44,7 @@
         this.datastore("content").readBranch("master").listDefinitions('custom', {
             "limit": -1
         }).each(function() {
-            array.push({
-                "title": this.title
-            })
+            array.push(this.title);
         }).then(function() {
             var template = document.getElementById('cat-list').innerHTML;
             var renderCats = Handlebars.compile(template);
