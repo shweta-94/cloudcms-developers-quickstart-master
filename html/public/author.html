@@ -42,9 +42,7 @@
         this.datastore("content").readBranch("master").listDefinitions('custom', {
             "limit": -1
         }).each(function() {
-            array.push({
-                "title" : this.title
-            });
+            array.push(this.title);
         }).then(function() {
             $("#DocumentResults").append(array);
             // var templateHtml = $("#new-list").html();
