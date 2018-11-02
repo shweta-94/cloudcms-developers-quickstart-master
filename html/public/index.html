@@ -17,15 +17,17 @@
 </head>
 <body>
 
-<div id="DocumentResults"></div>
-<script id="document-template" type="text/x-handlebars-template">
-    <div>
-        <h2>{{title}}</h2>
+<div id="cat">
+    {{title}}
+</div>
+<!--<script id="document-template" type="text/x-handlebars-template">-->
+    <!--<div>-->
+        <!--<h2>{{title}}</h2>-->
 
-        <p>There are no documents available at this time</p>
+        <!--<p>There are no documents available at this time</p>-->
 
-    </div>
-</script>
+    <!--</div>-->
+<!--</script>-->
 
 </body>
 
@@ -43,10 +45,11 @@
         this.datastore("content").readBranch("master").listDefinitions('custom', {
             "limit": -1
         }).then(function() {
-                var source = $("#document-template").html();
-                var template = Handlebars.compile(source);
-                var html = template(this.title);
-                $('#DocumentResults').append(html);
+                // var source = $("#document-template").html();
+                // var template = Handlebars.compile(source);
+                document.getElementById('cat').innerHTML = this.title;
+                // var html = template(this.title);
+                // $('#DocumentResults').append(html);
         });
 
             // var template = Handlebars.compile("");
