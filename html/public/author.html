@@ -4,6 +4,7 @@
 
     <script src="vendor/jquery/jquery.js"></script>
     <script src="vendor/gitana/gitana.js"></script>
+    <script src="vendor/gitana/gitana.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css"/>
 
@@ -12,6 +13,8 @@
     <title>Welcome Page</title>
 
     <h1>List of your custom definitions</h1>
+    <button type="button" onclick="myFunction()">Try it</button>
+    <p id="demo">A Paragraph.</p>
 
 
 </head>
@@ -26,24 +29,27 @@
 </body>
 
 <script type="text/javascript">
-    Gitana.connect({
-        "clientKey": "{{{clientKey}}}",
-        "clientSecret": "{{{clientSecret}}}",
-        "username": "{{{username}}}",
-        "password": "{{{password}}}",
-        "baseURL": "{{{baseURL}}}",
-        "application": "{{{application}}}"
-    }, function(err) {
-        var array = [];
-        this.datastore("content").readBranch("master").listDefinitions('custom', {
-            "limit": -1
-        }).each(function() {
-            array.push(this.title);
-            array.push(this.getQName());
-        }).then(function() {
-            document.getElementById('new-list').innerHTML = array;
-        })
-    });
-
+    function myFunction() {
+        Gitana.connect({
+            "clientKey": "{{{clientKey}}}",
+            "clientSecret": "{{{clientSecret}}}",
+            "username": "{{{username}}}",
+            "password": "{{{password}}}",
+            "baseURL": "{{{baseURL}}}",
+            "application": "{{{application}}}"
+        }, function (err) {
+            var array = [];
+            this.datastore("content").readBranch("master").listDefinitions('custom', {
+                "limit": -1
+            }).each(function () {
+                array.push(this.title);
+                array.push(this.getQName());
+            }).then(function () {
+                document.getElementById('new-list').innerHTML = array;
+                document.getElementById("demo").innerHTML = "Paragraph changed.";
+                return array
+            })
+        });
+    }
 </script>
 </html>
