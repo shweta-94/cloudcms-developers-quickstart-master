@@ -21,7 +21,7 @@
 <script id="document-template" type="text/x-handlebars-template">
     <div>
         {{#each array}}
-        <div>
+        <div class="row">
             <div class="col-md-12">
                 <h2>{{title}}</h2>
             </div>
@@ -45,6 +45,7 @@
         "baseURL": "{{{baseURL}}}",
         "application": "{{{application}}}"
     }, function(err) {
+
         this.datastore("content").readBranch("master").listDefinitions('custom', {
             "limit": -1
         }).each(function() {
@@ -53,12 +54,17 @@
                 "value": this._doc
             });
         }).then(function() {
-            var source = $("#document-template").html();
-            var template = Handlebars.compile(source);
-            var html = template({
-                array: array
+            $(function() {
+                var source = $("#document-template").html();
+                var template = Handlebars.compile(source);
+                var html = template(this.title);
+                $('#DocumentResults').html(html);
             });
-            $('#DocumentResults').html(html);
+            //
+            // var source = $("#document-template").html();
+            // var template = Handlebars.compile(source);
+            // var html = template(array);
+            // $('#DocumentResults').html(html);
         });
 
             // var template = Handlebars.compile("");
