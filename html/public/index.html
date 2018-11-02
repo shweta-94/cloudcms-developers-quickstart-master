@@ -18,11 +18,10 @@
 <body id="page-top">
 
 <div id="new-list">
-    {{#each array.items}}
-    <li>
-        <p>Title: {{title}}</p>
-        <span>{{title}}</span>
-    </li>
+    <!--{{#each array.items}}-->
+    <!--<li>-->
+        <!--<p>Title: {{title}}</p>-->
+    <!--</li>-->
 </div>
 
 </body>
@@ -44,7 +43,7 @@
                 {
                     "title": this.title
                 });
-            array.push(this.getQName());
+            // array.push(this.getQName());
         }).then(function() {
             document.getElementById('new-list').innerHTML = array;
         })
