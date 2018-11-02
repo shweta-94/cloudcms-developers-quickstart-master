@@ -45,6 +45,7 @@
             array.push(this.title);
         }).then(function() {
             $("#DocumentResults").append(array);
+            document.getElementById('DocumentResults').innerHTML = array;
             // var templateHtml = $("#new-list").html();
             var templateHtml = document.getElementById('new-list').innerHTML;
             var templateFn = Handlebars.compile(templateHtml);
