@@ -18,28 +18,11 @@
 <body id="page-top">
 
 
-<div id="cat-list">
-    <!--<h1>{{title}}</h1>-->
-    <!--{{#each this}}-->
-    <!--<div>-->
-
-    <h2>{{title}}</h2>
-
-    <!--</div>-->
-    <!--{{/each}}-->
-
-</div>
-
 <div id="new-list">
-    <!--<h1>{{title}}</h1>-->
     {{#each array.items}}
-    <!--<div>-->
-
     <h2>{{title}}</h2>
-
-    <!--</div>-->
+    <h2>{{_qname}}</h2>
     {{/each}}
-
 </div>
 
 
@@ -58,12 +41,9 @@
         this.datastore("content").readBranch("master").listDefinitions('custom', {
             "limit": -1
         }).each(function() {
-            document.getElementById('cat-list').innerHTML = this.title ;
-            array.push(this.title)
-            // document.getElementById('cat-list').innerHTML = this.title ;
+            array.push(this.title);
+            array.push(this._qname)
         }).then(function() {
-            // var template = document.getElementById('new-list-template').innerHTML;
-            // var renderCats = Handlebars.compile(template);
             document.getElementById('new-list').innerHTML = array;
         })
     });
