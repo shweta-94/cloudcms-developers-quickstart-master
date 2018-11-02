@@ -19,10 +19,11 @@
 
 
 <div id="cat-list">
+
     <!--<h1>{{title}}</h1>-->
     {{#each array}}
-    <div>
-    <h2>{{title}}</h2>
+    <div id = "cat">
+        <h2>{{title}}</h2>
     </div>
     {{/each}}
 
@@ -47,7 +48,12 @@
                 "title": this.title
             })
         }).then(function() {
-            document.getElementById('cat-list').innerHTML = array ;
+            var template = document.getElementById('cat-list').innerHTML;
+            var renderCats = Handlebars.compile(template);
+            document.getElementById('cat').innerHTML = renderCats({
+                array: array
+            });
+            // document.getElementById('cat-list').innerHTML = array ;
         })
     });
 
