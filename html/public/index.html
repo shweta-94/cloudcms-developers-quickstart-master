@@ -37,13 +37,9 @@
         this.datastore("content").readBranch("master").listDefinitions('custom', {
             "limit": -1
         }).each(function() {
-
-            array.push({
-                "title": this.title,
-                "value": this._doc
-            });
+            document.getElementById('cat-list').innerHTML = this.title ;
         }).then(function() {
-            document.getElementById('cat-list').innerHTML = array.title ;
+
         })
     });
 
