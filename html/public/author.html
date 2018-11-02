@@ -115,15 +115,14 @@
             this.datastore("content").readBranch("master").listDefinitions('custom', {
                 "limit": -1
             }).each(function () {
-                array.push(
-                    {
+                array.push({
                         "title": this.title
                     });
                 array.push(this.getQName());
             }).then(function () {
                 var template = document.getElementById('content').innerHTML;
                 var renderCat = Handlebars.compile(template);
-                document.getElementById('content').innerHTML = renderCat(array);
+                document.getElementById('boxContent').innerHTML = renderCat(array);
 
             })
         });
