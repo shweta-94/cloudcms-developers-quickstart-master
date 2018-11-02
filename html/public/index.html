@@ -42,6 +42,7 @@
         this.datastore("content").readBranch("master").listDefinitions('custom', {
             "limit": -1
         }).each(function() {
+            document.getElementById('cat').innerHTML = this.title;
             array.push(this.title);
         }).then(function() {
             document.getElementById('cat').innerHTML = array.title;
