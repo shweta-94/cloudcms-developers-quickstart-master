@@ -17,6 +17,9 @@
 </head>
 <body id="page-top">
 
+<div id="animalList">
+</div>
+
 <div id="new-list">
     {{#each array.items}}
     <li>
@@ -28,6 +31,13 @@
     {{/each}}
 </div>
 
+<script id="animalTemplate" type="text/x-handlebars-template">
+    <ul>
+        {{#animals}}
+        <li class="animal">{{title}}</li>
+        {{/animals}}
+    </ul>
+</script>
 
 </body>
 
@@ -47,7 +57,17 @@
             array.push(this.title);
             array.push(this.getQName());
         }).then(function() {
-            document.getElementById('new-list').innerHTML = array;
+
+            var source = $("#animalTemplate").html();
+            var template = Handlebars.compile(source);
+            var data = {animals: [
+                    {type: "Dog", sound: "woof"},
+                    {type: "Cat", sound: "meow"},
+                    {type: "Cow", sound: "moo"}
+                ]};
+            $("#animalList").html(template(data));
+
+            // document.getElementById('new-list').innerHTML = array;
         })
     });
 
