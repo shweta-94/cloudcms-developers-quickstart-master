@@ -27,6 +27,7 @@
             </div>
         </header>
 
+
         <section class="pt30 pb30">
             <div class="container clearfix">
                 <div class="row">
@@ -72,7 +73,7 @@
                 array.push(this.title);
                 array.push(this.getQName());
             }).then(function () {
-                document.getElementById('boxContent').innerHTML = array;
+                document.getElementById('new-list').innerHTML = array;
             })
         });
     }
