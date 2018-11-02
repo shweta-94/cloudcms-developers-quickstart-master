@@ -44,13 +44,20 @@
 
         this.datastore("content").readBranch("master").listDefinitions('custom', {
             "limit": -1
+        }).each(function() {
+            document.getElementById('cat').innerHTML = this.title;
+
+            array.push({
+                "title" : this.title
+            })
         }).then(function() {
                 // var source = $("#document-template").html();
                 // var template = Handlebars.compile(source);
-                document.getElementById('cat').innerHTML = this.title;
+                document.getElementById('cat').innerHTML = array.title;
                 // var html = template(this.title);
                 // $('#DocumentResults').append(html);
-        });
+            });
+        }
 
             // var template = Handlebars.compile("");
 
@@ -106,7 +113,7 @@
             // html += "</td>";
             // html += "</tr>";
         // })
-    });
+    );
 
 </script>
 </html>
