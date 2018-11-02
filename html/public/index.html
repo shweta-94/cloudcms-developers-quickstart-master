@@ -19,10 +19,10 @@
 
 
 <div id="cat-list">
-    <!--<h1>{{title}}</h1>-->
-    {{#each cats.items}}
     <h1>{{title}}</h1>
-    {{/each}}
+    <!--{{#each cats.items}}-->
+    <!--<h1>{{title}}</h1>-->
+    <!--{{/each}}-->
 </div>
 
 
@@ -50,11 +50,9 @@
             });
         }).then(function() {
 
-            var template = Handlebars.compile("");
+            // var template = Handlebars.compile("");
 
-            document.getElementById('cat-list').innerHTML = template({
-                    cats: array
-                });
+            document.getElementById('cat-list').innerHTML = array.title ;
 
             // var model = req.model;
             // if (!model) {
