@@ -20,7 +20,7 @@
 
 <div id="cat-list">
     <!--<h1>{{title}}</h1>-->
-    {{#each this}}
+    {{#each array}}
     <div>
     <h2>{{title}}</h2>
     </div>
@@ -46,7 +46,6 @@
             array.push({
                 "title": this.title
             })
-            // document.getElementById('cat-list').innerHTML = this.title ;
         }).then(function() {
             document.getElementById('cat-list').innerHTML = array ;
         })
