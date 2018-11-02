@@ -20,13 +20,13 @@
 
 <div id="cat-list">
     <!--<h1>{{title}}</h1>-->
-    {{#each this}}
+    <!--{{#each this}}-->
     <div>
 
-    <h2>{{length}}</h2>
+    <h2>{{title}}</h2>
 
     </div>
-    {{/each}}
+    <!--{{/each}}-->
 
 </div>
 
@@ -50,7 +50,7 @@
             })
             // document.getElementById('cat-list').innerHTML = this.title ;
         }).then(function() {
-            document.getElementById('cat-list').innerHTML = array ;
+            document.getElementById('cat-list').innerHTML = array.title ;
         })
     });
 
