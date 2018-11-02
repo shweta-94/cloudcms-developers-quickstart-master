@@ -12,7 +12,7 @@
     <h1>List of your custom definitions</h1>
 
 </head>
-<body id="page-top">
+<body>
 
 <div id="new-list" style="display:none">
 
@@ -24,6 +24,10 @@
 
     {{/each}}
 </div>
+
+<!--<template id="cat-template">-->
+        <!--<h1>{{title}}</h1>-->
+<!--</template>-->
 
 
 </body>
@@ -45,10 +49,9 @@
             array.push({
                 "title" : this.title
             });
-            // array.push(this.title);
-            // array.push(this.getQName());
+
         }).then(function() {
-            var templateHtml = $("#new-list").html();
+            var templateHtml = $("#cat-template").html();
             var templateFn = Handlebars.compile(templateHtml);
             var model = {
                 items : array
