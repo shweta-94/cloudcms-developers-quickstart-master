@@ -89,6 +89,7 @@
 
 
 <script type="text/javascript">
+    var array = [];
     Gitana.connect({
         "clientKey": "{{{clientKey}}}",
         "clientSecret": "{{{clientSecret}}}",
@@ -98,34 +99,16 @@
         "application": "{{{application}}}"
     }, function(err) {
         var html = "<table>";
-        this.datastore("content").readBranch("master").listDefinitions({
+        this.datastore("content").readBranch("master").queryNodes({
+            "_type": "store:author"
         }).each(function() {
-            // var template = document.getElementById('some').innerHTML;
-            // var renderCat = Handlebars.compile(template);
-            // document.getElementById('cat').innerHTML = renderCat(this);
 
-            html += "<tr>";
-            // image
-            html += "<td>";
-            html += "</br>";
-            html += "</br>";
-            html += "</td>";
-            html += "<td>";
-            // html += "<h3>" + this.title + "</h3>";
+            array.push(this.title);
+            array.push(this._doc);
 
-
-            html += "<ul class=" + "list-group" + ">";
-            html += "<li>" + this.title;
-            html += "<img height='100' width='100' src='http://localhost/proxy/repositories/" + this.getRepositoryId() + "/branches/" + this.getBranchId() + "/nodes/" + this.getId() + "/attachments/default'> ";
-            html += "</li>";
-            html += "</ul>";
-
-
-            html += "</td>";
-            html += "</tr>";
         }).then(function() {
-            html += "</table>";
-            $("#result").append(html);
+            document.getElementById('boxContent').innerHTML = array;
+            // $("#result").append(html);
         });
     });
 
