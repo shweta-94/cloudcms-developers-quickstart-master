@@ -60,12 +60,12 @@
             html += "</li>";
             html += "</ul>";
 
-
+            document.getElementById('cat').innerHTML = this;
             html += "</td>";
             html += "</tr>";
         }).then(function() {
 
-            document.getElementById('cat').innerHTML = this;
+
             html += "</table>";
             $("#result").append(html);
         });
