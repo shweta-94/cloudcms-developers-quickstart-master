@@ -17,27 +17,17 @@
 </head>
 <body id="page-top">
 
-<div id="animalList">
-</div>
-
 <div id="new-list">
-    {{#each array.items}}
-    <li>
-        <p>Title: {{title}}</p>
-        <span>{{title}}</span>
-    </li>
-    <!--<p>Title: {{title}}</p>-->
-    <!--<p>Qname: {{_qname}}</p>-->
-    {{/each}}
+    <!--{{#each array.items}}-->
+    <!--<li>-->
+        <!--<p>Title: {{title}}</p>-->
+        <!--<span>{{title}}</span>-->
+    <!--</li>-->
+    <!--&lt;!&ndash;<p>Title: {{title}}</p>&ndash;&gt;-->
+    <!--&lt;!&ndash;<p>Qname: {{_qname}}</p>&ndash;&gt;-->
+    <!--{{/each}}-->
 </div>
 
-<script id="animalTemplate" type="text/x-handlebars-template">
-    <ul>
-        {{#animals}}
-        <li class="animal">{{title}}</li>
-        {{/animals}}
-    </ul>
-</script>
 
 </body>
 
@@ -57,17 +47,7 @@
             array.push(this.title);
             array.push(this.getQName());
         }).then(function() {
-
-            var source = $("#animalTemplate").html();
-            var template = Handlebars.compile(source);
-            var data = {animals: [
-                    {type: "Dog", sound: "woof"},
-                    {type: "Cat", sound: "meow"},
-                    {type: "Cow", sound: "moo"}
-                ]};
-            $("#animalList").html(template(data));
-
-            // document.getElementById('new-list').innerHTML = array;
+            document.getElementById('new-list').innerHTML = array;
         })
     });
 
