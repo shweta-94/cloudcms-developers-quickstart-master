@@ -18,15 +18,13 @@
 <body id="page-top">
 
 
-<div id="cat">
-    <h1>{{title}}</h1>
-    {{#each cats}}
+<div id="cat-list">
+    <!--<h1>{{title}}</h1>-->
+    {{#each cats.items}}
     <div class="cat">
         <h1>{{title}}</h1>
-        <!--<p>Age: {{age}}</p>-->
     </div>
     {{/each}}
-    <!--<h1>{{title}}</h1>-->
 </div>
 
 
@@ -53,9 +51,15 @@
                 "value": this._doc
             });
         }).then(function() {
-            document.getElementById('cat').innerHTML = {
+            var template = document.getElementById('cat-list').innerHTML;
+            var renderCats = Handlebars.compile(template);
+            document.getElementById('cat-list').innerHTML = renderCats({
                 cats: array
-            };
+            });
+
+            // document.getElementById('cat').innerHTML = {
+            //     cats: array
+            // };
             //
             // document.getElementById('cat').innerHTML = {
             //     cats: this
