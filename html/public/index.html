@@ -17,8 +17,9 @@
 </head>
 <body id="page-top">
 
-<div id="new-list">
-    {{#each array.items}}
+<div id="new-list" style="display:none">
+
+    {{#each items}}
     <li>
         <p>Title: {{title}}</p>
         <span>{{title}}</span>
@@ -50,7 +51,13 @@
             // array.push(this.title);
             // array.push(this.getQName());
         }).then(function() {
-            document.getElementById('new-list').innerHTML = array;
+            var templateHtml = $("#new-list").html();
+            var templateFn = Handlebars.compile(templateHtml);
+            var model = {
+                items : array
+            };
+            var html = templateFn(model);
+            $("body").append(html);
         })
     });
 
