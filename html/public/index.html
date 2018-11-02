@@ -25,11 +25,6 @@
     {{/each}}
 </div>
 
-<!--<template id="cat-template">-->
-        <!--<h1>{{title}}</h1>-->
-<!--</template>-->
-
-
 </body>
 
 <script type="text/javascript">
@@ -51,7 +46,7 @@
             });
 
         }).then(function() {
-            var templateHtml = $("#cat-template").html();
+            var templateHtml = $("#new-list").html();
             var templateFn = Handlebars.compile(templateHtml);
             var model = {
                 items : array
