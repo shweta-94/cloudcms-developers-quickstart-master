@@ -28,6 +28,16 @@
     <!--{{/each}}-->
 </div>
 
+<main id="main">
+    <a href="#" onclick="loadIssue();">Load Github Issue</a>
+</main>
+<script id="issue-template" type="text/x-handlebars-template">
+    <article>
+        <header><h3>Issue #{{number}} ({{state}})</h3></header>
+        <p>{{body}}</p>
+        <footer><a href="{{url}}">created {{created_at}}</a></footer>
+    </article>
+</script>
 
 </body>
 
@@ -47,7 +57,17 @@
             array.push(this.title);
             array.push(this.getQName());
         }).then(function() {
-            document.getElementById('new-list').innerHTML = array;
+            var issue = {
+                state: "closed",
+                number: 5,
+                created_at: "2016-03-31 16:23:13 UTC",
+                body: "Instructions say GET /team and POST /newteam. Rspec wants GET/newteam and POST/team."
+            };
+            var template = Handlebars.compile(document.getElementById("issue-template").innerHTML);
+            var result = template(issue);
+            document.getElementsByTagName("main")[0].innerHTML += result;
+
+            // document.getElementById('new-list').innerHTML = array;
         })
     });
 
