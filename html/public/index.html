@@ -17,7 +17,7 @@
 </head>
 <body id="page-top">
 
-
+<div id = "list">
 <div id="cat">
     {{#each cats}}
     <div class="cat">
@@ -27,7 +27,7 @@
     {{/each}}
     <!--<h1>{{title}}</h1>-->
 </div>
-
+</div>
 
 <div id="result"></div>
 
@@ -45,9 +45,19 @@
         var html = "<table>";
         this.datastore("content").readBranch("master").listDefinitions('custom', {
             "limit": -1
-        }).each(function() {
+        }).then(function() {
 
-            document.getElementById('cat').innerHTML = this.title;
+            var div = document.getElementById('list').innerHTML;
+            var renderCats = Handlebars.compile(div);
+            document.getElementById('cat').innerHTML = renderCats({
+                cats: myCats
+            });
+            //
+            // document.getElementById('cat').innerHTML = {
+            //     cats: this
+            // };
+
+            // document.getElementById('cat').innerHTML = this.title;
             //
             // html += "<tr>";
             // // image
@@ -70,12 +80,7 @@
             //
             // html += "</td>";
             // html += "</tr>";
-        }).then(function() {
-            //
-            //
-            // html += "</table>";
-            // $("#result").append(html);
-        });
+        })
     });
 
 </script>
