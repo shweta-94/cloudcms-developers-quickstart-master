@@ -32,13 +32,13 @@
 
 <div id="new-list">
     <!--<h1>{{title}}</h1>-->
-    <!--{{#each this}}-->
+    {{#each array.items}}
     <!--<div>-->
 
-    <h2>{{title}}</h2>
+    <h2>{{array.title}}</h2>
 
     <!--</div>-->
-    <!--{{/each}}-->
+    {{/each}}
 
 </div>
 
@@ -66,7 +66,7 @@
         }).then(function() {
             // var template = document.getElementById('new-list-template').innerHTML;
             // var renderCats = Handlebars.compile(template);
-            document.getElementById('new-list').innerHTML = array[0].title;
+            document.getElementById('new-list').innerHTML = array;
         })
     });
 
