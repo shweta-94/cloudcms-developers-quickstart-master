@@ -21,11 +21,11 @@
 <div id="cat-list">
     <!--<h1>{{title}}</h1>-->
     <!--{{#each this}}-->
-    <div>
+    <!--<div>-->
 
     <h2>{{title}}</h2>
 
-    </div>
+    <!--</div>-->
     <!--{{/each}}-->
 
 </div>
@@ -46,12 +46,12 @@
             "limit": -1
         }).each(function() {
             document.getElementById('cat-list').innerHTML = this.title ;
-            array.push({
-                "title": this.title
-            })
+            // array.push({
+            //     "title": this.title
+            // })
             // document.getElementById('cat-list').innerHTML = this.title ;
         }).then(function() {
-            document.getElementById('cat-list').innerHTML = array.title ;
+            // document.getElementById('cat-list').innerHTML = array.title ;
         })
     });
 
