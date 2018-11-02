@@ -18,9 +18,9 @@
 <body id="page-top">
 
 
-    <div id="cat">
-        <h1>{{title}}</h1>
-    </div>
+<div id="cat">
+    <h1>{{title}}</h1>
+</div>
 
 
 <div id="result"></div>
@@ -41,32 +41,34 @@
             "limit": -1
         }).each(function() {
 
-            html += "<tr>";
-            // image
-            html += "<td>";
-            html += "</br>";
-            html += "</br>";
-            html += "</td>";
-            html += "<td>";
-            html += "<h3>" + "TITLE" + this.title + "</h3>";
-
-
-            html += "<ul class=" + "list-group" + ">";
-            html += "<li>" + this.title;
-
-            html += "<h3>" + "Qname" + this.getQName() + "</h3>";
-            // html += "<img height='100' width='100' src='http://localhost/proxy/repositories/" + this.getRepositoryId() + "/branches/" + this.getBranchId() + "/nodes/" + this.getId() + "/attachments/default'> ";
-            html += "</li>";
-            html += "</ul>";
-
             document.getElementById('cat').innerHTML = this.title;
-            html += "</td>";
-            html += "</tr>";
+            //
+            // html += "<tr>";
+            // // image
+            // html += "<td>";
+            // html += "</br>";
+            // html += "</br>";
+            // html += "</td>";
+            // html += "<td>";
+            // html += "<h3>" + "TITLE" + this.title + "</h3>";
+            //
+            //
+            // html += "<ul class=" + "list-group" + ">";
+            // html += "<li>" + this.title;
+            //
+            // html += "<h3>" + "Qname" + this.getQName() + "</h3>";
+            // // html += "<img height='100' width='100' src='http://localhost/proxy/repositories/" + this.getRepositoryId() + "/branches/" + this.getBranchId() + "/nodes/" + this.getId() + "/attachments/default'> ";
+            // html += "</li>";
+            // html += "</ul>";
+            //
+            //
+            // html += "</td>";
+            // html += "</tr>";
         }).then(function() {
-
-
-            html += "</table>";
-            $("#result").append(html);
+            //
+            //
+            // html += "</table>";
+            // $("#result").append(html);
         });
     });
 
