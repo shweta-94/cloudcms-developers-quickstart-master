@@ -14,24 +14,6 @@
 
     <h1>List of your custom definitions</h1>
     <button type="button" onclick="myFunction()">Try it</button>
-    <div id="DocumentResults"></div>
-    <script id="document-template" type="text/x-handlebars-template">
-        <div>
-            {{#each this}}
-            <div class="row">
-                <div class="col-md-12">
-                    <h2>{{Category}}</h2>
-                    {{#DocumentList}}
-                    <p>{{DocumentName}} at {{DocumentLocation}}</p>
-                    {{/DocumentList}}
-                </div>
-            </div>
-            {{/each}}
-
-            <p>There are no documents available at this time</p>
-
-        </div>
-    </script>
     <p id="demo">A Paragraph.</p>
 
 
@@ -39,6 +21,7 @@
 <body id="page-top">
 
 <div id="new-list">
+    <p>ere : {{title}}</p>
 </div>
 
 
@@ -58,8 +41,7 @@
             this.datastore("content").readBranch("master").listDefinitions('custom', {
                 "limit": -1
             }).each(function () {
-                array.push(
-                    ]this.title);
+                array.push(this.title);
                 array.push(this.getQName());
             }).then(function () {
                 document.getElementById('new-list').innerHTML = array;
@@ -68,44 +50,5 @@
             })
         });
     }
-
-    $(function() {
-        var source = $("#document-template").html();
-        var template = Handlebars.compile(source);
-        var html = template(data);
-        $('#DocumentResults').html(html);
-    });
-
-
-
-    var data = [
-        {
-            Category: "General",
-            DocumentList: [
-                {
-                    DocumentName: "Document Name 1 - General",
-                    DocumentLocation: "Document Location 1 - General"
-                },
-                {
-                    DocumentName: "Document Name 2 - General",
-                    DocumentLocation: "Document Location 2 - General"
-                }
-            ]
-        },
-        {
-            Category: "Unit Documents",
-            DocumentList: [
-                {
-                    DocumentName: "Document Name 1 - Unit Documents",
-                    DocumentList: "Document Location 1 - Unit Documents"
-                }
-            ]
-        },
-        {
-            Category: "Minutes"
-        }
-    ];
-
-
 </script>
 </html>
