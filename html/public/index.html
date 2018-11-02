@@ -17,15 +17,15 @@
 </head>
 
 <body>
-<script id="cat-list" type="text/x-handlebars-template">
+<!--<script id="cat-list" type="text/x-handlebars-template">-->
 
-    {{#each array}}
+    <!--{{#each array}}-->
     <div id = "cat">
         <h2>{{title}}</h2>
     </div>
-    {{/each}}
+    <!--{{/each}}-->
 
-</script>
+<!--</script>-->
 
 </body>
 
@@ -44,6 +44,7 @@
         }).each(function() {
             array.push(this.title);
         }).then(function() {
+            document.getElementById('cat').innerHTML = array.title;
             var template = document.getElementById('cat-list').innerHTML;
             var renderCats = Handlebars.compile(template);
             document.getElementById('cat').innerHTML = renderCats({
