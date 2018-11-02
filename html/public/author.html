@@ -74,9 +74,7 @@
                     });
                 array.push(this.getQName());
             }).then(function () {
-                var template = document.getElementById('content').innerHTML;
-                var renderCat = Handlebars.compile(template);
-                document.getElementById('boxContent').innerHTML = renderCat(array);
+                document.getElementById('boxContent').innerHTML = array;
 
             })
         });
