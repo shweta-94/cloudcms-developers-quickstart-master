@@ -4,44 +4,60 @@
 
     <script src="vendor/jquery/jquery.js"></script>
     <script src="vendor/gitana/gitana.js"></script>
-    <script src="vendor/gitana/gitana.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css"/>
-
     <script src="bower_components/handlebars/handlebars.js"></script>
-
     <title>Welcome Page</title>
 
     <h1>List of your custom definitions</h1>
+
 </head>
-<body id="page-top">
+<body>
 
+<div id="DocumentResults"></div>
 <div id="new-list">
+    <div>
+        {{#each items}}
+        <div class="row">
+            <div class="col-md-12">
+                <h2>{{title}}</h2>
+            </div>
+        </div>
+        {{/each}}
+    </div>
 </div>
-
 
 </body>
 
 <script type="text/javascript">
-    function myFunction() {
-        Gitana.connect({
-            "clientKey": "{{{clientKey}}}",
-            "clientSecret": "{{{clientSecret}}}",
-            "username": "{{{username}}}",
-            "password": "{{{password}}}",
-            "baseURL": "{{{baseURL}}}",
-            "application": "{{{application}}}"
-        }, function (err) {
-            var array = [];
-            this.datastore("content").readBranch("master").listDefinitions('custom', {
-                "limit": -1
-            }).each(function () {
-                array.push(this.title);
-                array.push(this.getQName());
-            }).then(function () {
-                document.getElementById('new-list').innerHTML = array;
-            })
-        });
-    }
+    Gitana.connect({
+        "clientKey": "{{{clientKey}}}",
+        "clientSecret": "{{{clientSecret}}}",
+        "username": "{{{username}}}",
+        "password": "{{{password}}}",
+        "baseURL": "{{{baseURL}}}",
+        "application": "{{{application}}}"
+    }, function(err) {
+        var array = [];
+        this.datastore("content").readBranch("master").listDefinitions('custom', {
+            "limit": -1
+        }).each(function() {
+            array.push({
+                "title" : this.title
+            });
+        }).then(function() {
+            $("#DocumentResults").append(array);
+            // var templateHtml = $("#new-list").html();
+            var templateHtml = document.getElementById('new-list').innerHTML;
+            var templateFn = Handlebars.compile(templateHtml);
+            var model = {
+                items : array
+            };
+            var html = templateFn(model);
+            $("#DocumentResults").append(html);
+        })
+    });
+
 </script>
+
 </html>
