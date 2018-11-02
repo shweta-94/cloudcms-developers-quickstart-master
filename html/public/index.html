@@ -15,13 +15,26 @@
 
 
 </head>
-<body id="page-top">
+<body>
 
-<div id="cat">
-    {{#each this}}
-        <div class="row"></div>
-    {{/each}}
-</div>
+<div id="DocumentResults"></div>
+<script id="document-template" type="text/x-handlebars-template">
+    <div>
+        {{#each this}}
+        <div class="row">
+            <div class="col-md-12">
+                <h2>{{Category}}</h2>
+                {{#DocumentList}}
+                <p>{{DocumentName}} at {{DocumentLocation}}</p>
+                {{/DocumentList}}
+            </div>
+        </div>
+        {{/each}}
+
+        <p>There are no documents available at this time</p>
+
+    </div>
+</script>
 
 </body>
 
@@ -44,10 +57,15 @@
                 "value": this._doc
             });
         }).then(function() {
+            var source = $("#document-template").html();
+            var template = Handlebars.compile(source);
+            var html = template(array);
+            $('#DocumentResults').html(html);
+        });
 
             // var template = Handlebars.compile("");
 
-            document.getElementById('cat').innerHTML = this ;
+            // document.getElementById('cat').innerHTML = this ;
 
             // var model = req.model;
             // if (!model) {
