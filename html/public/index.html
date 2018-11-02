@@ -46,7 +46,7 @@
                 var source = $("#document-template").html();
                 var template = Handlebars.compile(source);
                 var html = template(this.title);
-                $('#DocumentResults').html(html);
+                $('#DocumentResults').append(html);
         });
 
             // var template = Handlebars.compile("");
