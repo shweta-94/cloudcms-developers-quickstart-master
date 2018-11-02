@@ -17,11 +17,10 @@
 </head>
 <body id="page-top">
 
-
 <div id="new-list">
     {{#each array.items}}
-    <h2>title: {{title}}</h2>
-    <h2>title: {{_qname}}</h2>
+    <p>Title: {{title}}</p>
+    <p>Qname: {{_qname}}</p>
     {{/each}}
 </div>
 
@@ -42,7 +41,7 @@
             "limit": -1
         }).each(function() {
             array.push(this.title);
-            array.push(this._qname)
+            array.push(this.getQName());
         }).then(function() {
             document.getElementById('new-list').innerHTML = array;
         })
