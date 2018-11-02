@@ -19,7 +19,9 @@
     <div>
         {{#each items}}
         <div class="row">
-            <h2>{{name}}</h2>
+            <div class="col-md-12">
+                <h2>{{title}}</h2>
+            </div>
         </div>
         {{/each}}
     </div>
@@ -40,27 +42,17 @@
         this.datastore("content").readBranch("master").listDefinitions('custom', {
             "limit": -1
         }).each(function() {
-            array.push({
-                "title": this.title,
-            });
+            array.push(this.title);
         }).then(function() {
-            var myCats = [
-                { name: 'Fiona', age: 4 },
-                { name: 'Spot', age: 12 },
-                { name: 'Chestnut', age: 4 },
-                { name: 'Frisky', age: false },
-                { name: 'Biscuit', age: 4 }
-            ];
-
             // $("#DocumentResults").append(array);
             var templateHtml = document.getElementById('new-list').innerHTML;
             var templateFn = Handlebars.compile(templateHtml);
             var model = {
-                items : myCats
+                items : array
             };
             var html = templateFn(model);
 
-            document.getElementById('DocumentResults').innerHTML = myCats;
+            document.getElementById('DocumentResults').innerHTML = html;
             // var templateHtml = $("#new-list").html();
             // var templateHtml = document.getElementById('new-list').innerHTML;
             // var templateFn = Handlebars.compile(templateHtml);
@@ -69,7 +61,7 @@
             // };
             // var html = templateFn(model);
             // $("#DocumentResults").append(html);
-            document.getElementById('DocumentResults').innerHTML = html;
+            document.getElementById('DocumentResults').innerHTML = array;
         })
     });
 
