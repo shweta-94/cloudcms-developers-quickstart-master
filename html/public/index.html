@@ -1,93 +1,184 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
     <meta charset="utf-8">
-    <title>Register with Cloud CMS</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
-    <meta name="author" content="Gitana Software, Inc.">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="author" content="">
 
-    <link type="text/css" rel="stylesheet" href="/special/bootstrap/dist/css/bootstrap.css">
-    <link type="text/css" rel="stylesheet" href="/special/registration-confirm.css">
+    <title>Cloud CMS Sample Website</title>
 
-    <script src="/special/jquery/dist/jquery.min.js"></script>
-    <script src="/special/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="/special/registration-confirm.js"></script>
-    <script src="/_lib/gitana/gitana.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.4/handlebars.min.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <title>Welcome Page</title>
+    <!-- Custom fonts for this template -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="vendor/simple-line-icons/css/simple-line-icons.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
 
-    <h1>List of your custom definitions</h1>
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="device-mockups/device-mockups.min.css">
+
+    <!-- Custom styles for this template -->
+    <link href="css/new-age.css" rel="stylesheet">
 
 </head>
-<body>
 
-<script id="new-list" type="text/x-handlebars-template">
+<body id="page-top">
 
-    <div>
-        {{#each items}}
-        <section id="content">
-            <header class="page-header mb30">
-                <div class="container">
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+        <img src="/quickstart/img/login-logo.png" style="max-width: 320px">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#download">Download</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" target="_blank" class="firstLevel" href="https://www.cloudcms.com">About Cloud CMS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" target="_blank" class="firstLevel" href="https://www.cloudcms.com/developers.html">Developers</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" target="_blank" class="firstLevel" href="https://www.cloudcms.com/contact.html">Contact Us</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<section class="cta">
+    <div class="cta-content">
+        <div class="container">
+            <h2><b>Sample Web Site with Cloud CMS</b></h2>
+            <a href="#library" class="btn btn-outline btn-xl js-scroll-trigger">Check out your Content!</a>
+        </div>
+    </div>
+    <div class="overlay"></div>
+</section>
+
+<section class="features" id="features">
+    <div class="container">
+        <div class="section-heading text-center">
+            <h2>Lot of Features, Lot of Fun</h2>
+            <p class="text-muted">Check out what you can do with this Cloud CMS!</p>
+            <hr>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 my-auto">
+                <div class="container-fluid">
                     <div class="row">
-                        <div class="col-sm-12">
-                            <h1>
-                                <h2>{{title}}</h2>
-                                <a href="/special/{{QName}}.html"><i class="icon-eye"></i>{{QName}}</a>
-                            </h1>
+                        <div class="col-lg-6">
+                            <div class="feature-item">
+                                <i class="icon-screen-smartphone text-primary"></i>
+                                <h3>Easy To Use</h3>
+                                <p class="text-muted">Create your Content Type, Content, Upload an Image and see in on your website </p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="feature-item">
+                                <i class="icon-camera text-primary"></i>
+                                <h3>Mock Up Examples</h3>
+                                <p class="text-muted">Ready to use examples available based on your language preference</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="feature-item">
+                                <i class="icon-present text-primary"></i>
+                                <h3>High Quality</h3>
+                                <p class="text-muted">Cloud CMS provides Authentic Quality with Enterprise Features</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="feature-item">
+                                <i class="icon-lock-open text-primary"></i>
+                                <h3>Easy to Integrate</h3>
+                                <p class="text-muted">Cloud CMS provides pre-built integrations with Amazon SNS, SQS, S3, Route 53, Elastic Transcoder and more.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </header>
-        </section>
-        <div class="row">
-            <div class="col-md-12">
-
             </div>
         </div>
-        {{/each}}
     </div>
-</script>
+</section>
 
-<script type="text/javascript">
-    debugger;
-    Gitana.connect({
-        "clientKey": "77c5f1f3-4b12-45a2-ab27-fb3416c68bad",
-        "clientSecret": "q4gQMjgcl8RhkJYR8piSvrIZBwDXKmeAeSpCncfWuJwz0DlzVKU9UibsCcD32rX/cqc1TiVJ3uwt0jzrDaGjenN8xzGSrXtEompYt8VDgqs=",
-        "username": "85cfa770-d567-48d2-b898-77eb32121ef0",
-        "password": "w1xprvHFJUs4G7bMvJa5npB4Tc8bdl4eh1156kjChWGlrMqSHyWsY3bheNnPdIfDTGiYAWwWoaDNGfB4F33vgaAk55MXtd9V9UYGSt6kP4k=",
-        "baseURL": "http://localhost:8080",
-        "application": "4dfccd4aa8f3d902573a"
-    }, function(err) {
-        var array = [];
-        this.datastore("content").readBranch("master").listDefinitions('custom', {
-            "limit": -1
-        }).each(function() {
-            array.push({
-                "title": this.title,
-                "nodeId": this._doc,
-                "QName": this.getQName(),
-                "repositoryId": this.getRepositoryId(),
-                "branchId": this.getBranchId(),
-                "imageURL": 'http://localhost/proxy/repositories/' + this.getRepositoryId() + '/branches/' + this.getBranchId() + '/nodes/' + this._doc + '/attachments/default'
+<section class="second" id="library">
+    <div class="cta-content">
+        <div class="container">
+            <h2>Explore Our Library</h2>
+            <a href="/quickstart/library.html" class="btn btn-outline btn-xl js-scroll-trigger">Let's Go</a>
+        </div>
+    </div>
+    <div class="overlay"></div>
+</section>
 
-            });
-        }).then(function() {
-            var templateHtml = $("#new-list").html();
-            var templateFn = Handlebars.compile(templateHtml);
-            var model = {
-                items : array
-            };
-            var html = templateFn(model);
-            $("body").append(html);
-        })
-    });
+<section class="catalog" id="catalog">
+    <div class="cta-content">
+        <div class="container">
+            <h2>Check out our Cupcakes Catalog</h2>
+            <a href="/quickstart/catalog.html" class="btn btn-outline btn-xl js-scroll-trigger">Let's Go</a>
+        </div>
+    </div>
+    <div class="overlay"></div>
+</section>
 
-</script>
+<section class="contact bg-primary" id="contact">
+    <div class="container">
+        <h2>Contact Us</h2>
+        <ul class="list-inline list-social">
+            <li class="list-inline-item social-twitter">
+                <a href="https://www.twitter.com/cloudcms">
+                    <i class="fab fa-twitter"></i>
+                </a>
+            </li>
+            <li class="list-inline-item social-twitter">
+                <a href="#">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+            </li>
+            <li class="list-inline-item social-google-plus">
+                <a href="#">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </li>
+            <li class="list-inline-item social-github">
+                <a href="#">
+                    <i class="fab fa-github"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p>Copyright © 2018 <a href="https://www.cloudcms.com" target="blank">Cloud CMS</a> / All rights reserved.</p>
+    </div>
+</footer>
+
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for this template -->
+<script src="js/new-age.min.js"></script>
+
 </body>
 
 </html>
