@@ -1,12 +1,24 @@
+<!DOCTYPE html>
 <html>
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8">
+    <title>Register with Cloud CMS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Gitana Software, Inc.">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-    <script src="vendor/jquery/jquery.js"></script>
-    <script src="vendor/gitana/gitana.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css"/>
-    <script src="bower_components/handlebars/handlebars.js"></script>
+    <link type="text/css" rel="stylesheet" href="/special/bootstrap/dist/css/bootstrap.css">
+    <link type="text/css" rel="stylesheet" href="/special/registration-confirm.css">
+
+    <script src="/special/jquery/dist/jquery.min.js"></script>
+    <script src="/special/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/special/registration-confirm.js"></script>
+    <script src="/_lib/gitana/gitana.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.4/handlebars.min.js"></script>
+
     <title>Welcome Page</title>
 
     <h1>List of your custom definitions</h1>
@@ -14,49 +26,68 @@
 </head>
 <body>
 
-<div id="DocumentResults"></div>
-<div id="new-list">
+<script id="new-list" type="text/x-handlebars-template">
+
     <div>
         {{#each items}}
+        <section id="content">
+            <header class="page-header mb30">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h1>
+                                <h2>{{title}}</h2>
+                                <a href="/special/{{QName}}.html"><i class="icon-eye"></i>{{QName}}</a>
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        </section>
         <div class="row">
             <div class="col-md-12">
-                <h2>{{title}}</h2>
+
             </div>
         </div>
         {{/each}}
     </div>
-</div>
-
-</body>
+</script>
 
 <script type="text/javascript">
+    debugger;
     Gitana.connect({
-        "clientKey": "{{{clientKey}}}",
-        "clientSecret": "{{{clientSecret}}}",
-        "username": "{{{username}}}",
-        "password": "{{{password}}}",
-        "baseURL": "{{{baseURL}}}",
-        "application": "{{{application}}}"
+        "clientKey": "77c5f1f3-4b12-45a2-ab27-fb3416c68bad",
+        "clientSecret": "q4gQMjgcl8RhkJYR8piSvrIZBwDXKmeAeSpCncfWuJwz0DlzVKU9UibsCcD32rX/cqc1TiVJ3uwt0jzrDaGjenN8xzGSrXtEompYt8VDgqs=",
+        "username": "85cfa770-d567-48d2-b898-77eb32121ef0",
+        "password": "w1xprvHFJUs4G7bMvJa5npB4Tc8bdl4eh1156kjChWGlrMqSHyWsY3bheNnPdIfDTGiYAWwWoaDNGfB4F33vgaAk55MXtd9V9UYGSt6kP4k=",
+        "baseURL": "http://localhost:8080",
+        "application": "4dfccd4aa8f3d902573a"
     }, function(err) {
         var array = [];
         this.datastore("content").readBranch("master").listDefinitions('custom', {
             "limit": -1
         }).each(function() {
             array.push({
-                "title" : this.title
+                "title": this.title,
+                "nodeId": this._doc,
+                "QName": this.getQName(),
+                "repositoryId": this.getRepositoryId(),
+                "branchId": this.getBranchId(),
+                "imageURL": 'http://localhost/proxy/repositories/' + this.getRepositoryId() + '/branches/' + this.getBranchId() + '/nodes/' + this._doc + '/attachments/default'
+
             });
         }).then(function() {
-            // var templateHtml = $("#new-list").html();
-            var templateHtml = document.getElementById('new-list').innerHTML;
+            var templateHtml = $("#new-list").html();
             var templateFn = Handlebars.compile(templateHtml);
             var model = {
                 items : array
             };
             var html = templateFn(model);
-            $("#DocumentResults").append(html);
+            $("body").append(html);
         })
     });
 
 </script>
+</body>
 
 </html>
