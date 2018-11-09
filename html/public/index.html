@@ -11,18 +11,14 @@
     <!--Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
 
+    <!-- Custom styles for this template -->
+    <link href="css/quickstart.css" rel="stylesheet">
+
     <script src="vendor/jquery/jquery.js"></script>
     <script src="vendor/gitana/gitana.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css"/>
 
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.4/handlebars.min.js"></script>
-
-    <!-- Custom scripts for this template -->
-    <script src="js/quickstart.min.js"></script>
-
-    <!-- Custom styles for this template -->
-    <link href="css/quickstart.css" rel="stylesheet">
+    <script src="vendor/handlebars/handlebars.js"></script>
 
   </head>
 
@@ -42,12 +38,12 @@
 
 <script>
     Gitana.connect({
-        "clientKey": "{{{clientKey}}}",
-        "clientSecret": "{{{clientSecret}}}",
-        "username": "{{{username}}}",
-        "password": "{{{password}}}",
-        "baseURL": "{{{baseURL}}}",
-        "application": "{{{application}}}"
+        "clientKey": "abe36db5-b28c-49bc-8c73-9d40dca90946",
+        "clientSecret": "aCixU0Y+DmW0Z9EJtICainVJOeEbzUKYdexzibDuxFzB/PX+petqqchakMelCP6mXlj2bl/k2AN7+ofDvwY1R6ieAyJArHwYeLlHPKtN/HM=",
+        "username": "3ea04aa3-9111-4dc9-bbfb-3453f9781d13",
+        "password": "yKyxNdGXTdyeYwVpGIGRIQ2CGbp1xxShgx1QXrX9bX5K1+ELlw0SJNzF+fmFIzKHarhuHZ2rl+uKcJcL9ZbPmlFx8NiFWde7uOKWngY1I6c=",
+        "baseURL": "http://localhost:8080",
+        "application": "5749d2830d3cd22e284c"
     }, function(err) {
         var array =[];
         this.datastore("content").readBranch("master").queryNodes({
@@ -90,12 +86,12 @@
 
 <script>
     Gitana.connect({
-        "clientKey": "{{{clientKey}}}",
-        "clientSecret": "{{{clientSecret}}}",
-        "username": "{{{username}}}",
-        "password": "{{{password}}}",
-        "baseURL": "{{{baseURL}}}",
-        "application": "{{{application}}}"
+        "clientKey": "abe36db5-b28c-49bc-8c73-9d40dca90946",
+        "clientSecret": "aCixU0Y+DmW0Z9EJtICainVJOeEbzUKYdexzibDuxFzB/PX+petqqchakMelCP6mXlj2bl/k2AN7+ofDvwY1R6ieAyJArHwYeLlHPKtN/HM=",
+        "username": "3ea04aa3-9111-4dc9-bbfb-3453f9781d13",
+        "password": "yKyxNdGXTdyeYwVpGIGRIQ2CGbp1xxShgx1QXrX9bX5K1+ELlw0SJNzF+fmFIzKHarhuHZ2rl+uKcJcL9ZbPmlFx8NiFWde7uOKWngY1I6c=",
+        "baseURL": "http://localhost:8080",
+        "application": "5749d2830d3cd22e284c"
     }, function(err) {
         var array =[];
         this.datastore("content").readBranch("master").queryNodes({
@@ -129,7 +125,7 @@
             <div class="context-header">
               <span class="context-header-logo-holder link-to-home" style="cursor: pointer;">
                   <div>
-                      <img src="/public/img/login-logo.png" style="max-width: 320px">
+                      <img src="./img/login-logo.png" style="max-width: 320px">
                   </div>
               </span>
           </div>
@@ -227,5 +223,8 @@
     </footer>
 
   </body>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/quickstart.js"></script>
 
 </html>
